@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 #url = "https://raw.githubusercontent.com/D6200763-SUT/SUT_Rice_Project_2024/refs/heads/main/Import_Dataset/file_data.csv"
 #url = "https://raw.githubusercontent.com/D6200763-SUT/SUT_Rice_Project_2024/refs/heads/main/Import_Dataset/Rice_Cultivated_Area_By_Variety_Season_Monthly_2015_2019/Monthly-production%20volume%20of%20rice%20in-season%20Rai(unit)%202015.csv"
@@ -28,6 +29,26 @@ names_list = (
 
 print("จำนวนชื่อทั้งหมด =", len(names_list))
 print(names_list[:])   # แสดงตัวอย่าง 30 รายการแรก
+
+
+# Plot temperature and humidity trends to quickly inspect weather conditions.
+fig, ax_temp = plt.subplots(figsize=(12, 6))
+ax_temp.plot(df["Date"], df["temp"], color="tab:red", label="Temperature (°C)")
+ax_temp.set_xlabel("Date")
+ax_temp.set_ylabel("Temperature (°C)", color="tab:red")
+ax_temp.tick_params(axis="x", rotation=45)
+
+ax_humidity = ax_temp.twinx()
+ax_humidity.plot(df["Date"], df["humidity"], color="tab:blue", label="Humidity (%)")
+ax_humidity.set_ylabel("Humidity (%)", color="tab:blue")
+
+lines = ax_temp.get_lines() + ax_humidity.get_lines()
+labels = [line.get_label() for line in lines]
+ax_temp.legend(lines, labels, loc="upper left")
+ax_temp.set_title("Temperature vs Humidity Over Time")
+
+plt.tight_layout()
+plt.show()
 
 
 '''
