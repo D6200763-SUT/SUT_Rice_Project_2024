@@ -1,0 +1,35 @@
+﻿station_id,province_th,province_en,region_th,region_en,qa_flag,method,distance_km
+Chiang Mai Rice research Center,เชียงราย,Chiang Rai,ภาคเหนือ,North,CHECK,nearest,43.517
+Chiangrai Rice research Center,เชียงราย,Chiang Rai,ภาคเหนือ,North,CHECK,nearest,43.517
+Lopburi Rice Seed Center,ลพบุรี,Lop Buri,ภาคกลาง,Central,CHECK,nearest,25.315
+Mae Hong Son Rice research Center,แม่ฮ่องสอน,Mae Hong Son,ภาคเหนือ,North,CHECK,nearest,87.567
+Nong Khai Rice research Center,หนองคาย,Nong Khai,ภาคตะวันออกเฉียงเหนือ,Northeast,CHECK,nearest,47.458
+Ratchaburi Rice research Center,ราชบุรี,Ratchaburi,ภาคตะวันตก,West,CHECK,nearest,12.564
+Sakon Nakhon Rice research Center,สกลนคร,Sakon Nakhon,ภาคตะวันออกเฉียงเหนือ,Northeast,CHECK,nearest,39.295
+Udon Thani Rice research Center,อุดรธานี,Udon Thani,ภาคตะวันออกเฉียงเหนือ,Northeast,CHECK,nearest,32.032
+Chachoengsao Rice research Center,ฉะเชิงเทรา,Chachoengsao,ภาคตะวันออก,East,OK,nearest,28.915
+Chai Nat Rice Seed Center 1,อุทัยธานี,Uthai Thani,ภาคกลาง,Central,OK,nearest,22.123
+Chai Nat Rice Seed Center 2,สิงห์บุรี,Sing Buri,ภาคกลาง,Central,OK,nearest,2.061
+Chai Nat Rice research Center,ชัยนาท,Chai Nat,ภาคกลาง,Central,OK,nearest,7.85
+Chum Phae Rice research Center,ขอนแก่น,Khon Kaen,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,54.892
+Khlong Luang Rice research Center,ปทุมธานี,Pathum Thani,ภาคกลาง,Central,OK,nearest,7.834
+Khon Kaen Rice research Center,ขอนแก่น,Khon Kaen,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,25.084
+Krabi Rice research Center,กระบี่,Krabi,ภาคใต้,South,OK,nearest,10.544
+Lopburi Rice research Center,ลพบุรี,Lop Buri,ภาคกลาง,Central,OK,nearest,12.693
+Nakhon Ratchasima Rice research Center,นครราชสีมา,Nakhon Ratchasima,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,34.764
+Nakhon Sawan Rice Seed Center,นครสวรรค์,Nakhon Sawan,ภาคกลาง,Central,OK,nearest,9.684
+Nakhon Si Thammarat Rice research Center,นครศรีธรรมราช,Nakhon Si Thammarat,ภาคใต้,South,OK,nearest,21.435
+Pathum Thani Rice research Center,ปทุมธานี,Pathum Thani,ภาคกลาง,Central,OK,nearest,11.553
+Pattani Rice research Center,ปัตตานี,Pattani,ภาคใต้,South,OK,nearest,25.484
+Phatthalung Rice research Center,พัทลุง,Phatthalung,ภาคใต้,South,OK,nearest,7.37
+Phitsanulok Rice Seed Center,พิษณุโลก,Phitsanulok,ภาคเหนือ,North,OK,nearest,4.421
+Phra Nakhon Si Ayutthaya Rice research Center,อยุธยา,Phra Nakhon Si Ayutthaya,ภาคกลาง,Central,OK,nearest,7.996
+Phrae Rice research Center,แพร่,Phrae,ภาคเหนือ,North,OK,nearest,15.988
+Prachinburi Rice research Center,นครนายก,Nakhon Nayok,ภาคกลาง,Central,OK,nearest,21.384
+Ratchaburi Rice Seed Center 1,นครปฐม,Nakhon Pathom,ภาคกลาง,Central,OK,nearest,31.264
+Ratchaburi Rice Seed Center2,ราชบุรี,Ratchaburi,ภาคตะวันตก,West,OK,nearest,9.322
+Roi Et Rice Seed Center,ร้อยเอ็ด,Roi Et,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,17.215
+Samoeng Rice research Center,เชียงใหม่,Chiang Mai,ภาคเหนือ,North,OK,nearest,16.018
+Sukhothai Rice Seed Center,สุโขทัย,Sukhothai,ภาคเหนือ,North,OK,nearest,20.242
+Surin Rice research Center,สุรินทร์,Surin,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,17.911
+Ubon Ratchathani Rice research Center,อุบลราชธานี,Ubon Ratchathani,ภาคตะวันออกเฉียงเหนือ,Northeast,OK,nearest,36.845

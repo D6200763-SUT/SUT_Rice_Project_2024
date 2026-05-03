@@ -1,0 +1,73 @@
+﻿station_id,feature,corr,n,method
+Chum Phae Rice research Center,temp,0.0645422347176254,1826,pearson
+Chum Phae Rice research Center,humidity,-0.05156615891245067,1826,pearson
+Chum Phae Rice research Center,rainfall,-0.009900634080534201,1826,pearson
+Chum Phae Rice research Center,wind_speed,-0.0072215799877833305,1826,pearson
+Khon Kaen Rice research Center,temp,-0.00030168756244878023,1826,pearson
+Khon Kaen Rice research Center,humidity,0.05471839603672161,1826,pearson
+Khon Kaen Rice research Center,rainfall,0.019606619605153437,1826,pearson
+Khon Kaen Rice research Center,wind_speed,-0.021996032983778398,1826,pearson
+Nakhon Ratchasima Rice research Center,temp,0.0023973608229477267,1826,pearson
+Nakhon Ratchasima Rice research Center,humidity,0.1412037257844557,1826,pearson
+Nakhon Ratchasima Rice research Center,rainfall,0.041629924619464714,1826,pearson
+Nakhon Ratchasima Rice research Center,wind_speed,0.04869854141530587,1826,pearson
+Nong Khai Rice research Center,temp,,1826,pearson
+Nong Khai Rice research Center,humidity,,1826,pearson
+Nong Khai Rice research Center,rainfall,,1826,pearson
+Nong Khai Rice research Center,wind_speed,,1826,pearson
+Roi Et Rice Seed Center,temp,0.03429192079115602,1826,pearson
+Roi Et Rice Seed Center,humidity,0.02627389673538804,1826,pearson
+Roi Et Rice Seed Center,rainfall,-0.0071308711825721184,1826,pearson
+Roi Et Rice Seed Center,wind_speed,0.027532983010613164,1826,pearson
+Sakon Nakhon Rice research Center,temp,0.18147994072396514,1826,pearson
+Sakon Nakhon Rice research Center,humidity,-0.13256637696866821,1826,pearson
+Sakon Nakhon Rice research Center,rainfall,-0.02305719149502858,1826,pearson
+Sakon Nakhon Rice research Center,wind_speed,0.04443199909216404,1826,pearson
+Surin Rice research Center,temp,0.03222500818589988,1826,pearson
+Surin Rice research Center,humidity,-0.015514615718437267,1826,pearson
+Surin Rice research Center,rainfall,0.014014128849641034,1826,pearson
+Surin Rice research Center,wind_speed,-0.02050072431594895,1826,pearson
+Ubon Ratchathani Rice research Center,temp,,1826,pearson
+Ubon Ratchathani Rice research Center,humidity,,1826,pearson
+Ubon Ratchathani Rice research Center,rainfall,,1826,pearson
+Ubon Ratchathani Rice research Center,wind_speed,,1826,pearson
+Udon Thani Rice research Center,temp,-0.02253816112507493,1826,pearson
+Udon Thani Rice research Center,humidity,-0.021648405848746815,1826,pearson
+Udon Thani Rice research Center,rainfall,-0.005240893544771859,1826,pearson
+Udon Thani Rice research Center,wind_speed,-0.01917378532830607,1826,pearson
+Chum Phae Rice research Center,temp,0.1226746761781047,1826,spearman
+Chum Phae Rice research Center,humidity,-0.0843462635133087,1826,spearman
+Chum Phae Rice research Center,rainfall,0.019072716362816024,1826,spearman
+Chum Phae Rice research Center,wind_speed,-0.0064567656768109195,1826,spearman
+Khon Kaen Rice research Center,temp,-0.03857036586706894,1826,spearman
+Khon Kaen Rice research Center,humidity,0.13456433285452532,1826,spearman
+Khon Kaen Rice research Center,rainfall,0.07005998310374399,1826,spearman
+Khon Kaen Rice research Center,wind_speed,-0.052565307939745606,1826,spearman
+Nakhon Ratchasima Rice research Center,temp,-0.02624755648183154,1826,spearman
+Nakhon Ratchasima Rice research Center,humidity,0.24221785133893234,1826,spearman
+Nakhon Ratchasima Rice research Center,rainfall,0.08504896128427368,1826,spearman
+Nakhon Ratchasima Rice research Center,wind_speed,0.004820187026356323,1826,spearman
+Nong Khai Rice research Center,temp,,1826,spearman
+Nong Khai Rice research Center,humidity,,1826,spearman
+Nong Khai Rice research Center,rainfall,,1826,spearman
+Nong Khai Rice research Center,wind_speed,,1826,spearman
+Roi Et Rice Seed Center,temp,0.05369353821475332,1826,spearman
+Roi Et Rice Seed Center,humidity,0.010017041937258175,1826,spearman
+Roi Et Rice Seed Center,rainfall,0.014057280038435774,1826,spearman
+Roi Et Rice Seed Center,wind_speed,0.05030506835953412,1826,spearman
+Sakon Nakhon Rice research Center,temp,0.16832128535302412,1826,spearman
+Sakon Nakhon Rice research Center,humidity,-0.1073852361309608,1826,spearman
+Sakon Nakhon Rice research Center,rainfall,-0.04753715462965423,1826,spearman
+Sakon Nakhon Rice research Center,wind_speed,0.01982702403585402,1826,spearman
+Surin Rice research Center,temp,0.037829432143549675,1826,spearman
+Surin Rice research Center,humidity,0.040606037602033754,1826,spearman
+Surin Rice research Center,rainfall,0.035343099178753654,1826,spearman
+Surin Rice research Center,wind_speed,-0.016476556497386764,1826,spearman
+Ubon Ratchathani Rice research Center,temp,,1826,spearman
+Ubon Ratchathani Rice research Center,humidity,,1826,spearman
+Ubon Ratchathani Rice research Center,rainfall,,1826,spearman
+Ubon Ratchathani Rice research Center,wind_speed,,1826,spearman
+Udon Thani Rice research Center,temp,-0.029044277800101298,1826,spearman
+Udon Thani Rice research Center,humidity,-0.026067337499871564,1826,spearman
+Udon Thani Rice research Center,rainfall,-0.010684161403232618,1826,spearman
+Udon Thani Rice research Center,wind_speed,-0.02296167735080439,1826,spearman

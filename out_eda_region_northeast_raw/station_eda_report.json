@@ -1,0 +1,51 @@
+{
+  "input_csv": "data/env_daily_with_rice_monthly_raw.csv",
+  "detected_columns": {
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_col": "bph_raw",
+    "lat_col": "latitude",
+    "lon_col": "longitude"
+  },
+  "target_used": "bph_raw",
+  "selected_stations": [
+    "Chum Phae Rice research Center",
+    "Khon Kaen Rice research Center",
+    "Nakhon Ratchasima Rice research Center",
+    "Nong Khai Rice research Center",
+    "Roi Et Rice Seed Center",
+    "Sakon Nakhon Rice research Center",
+    "Surin Rice research Center",
+    "Ubon Ratchathani Rice research Center",
+    "Udon Thani Rice research Center"
+  ],
+  "stations_arg": "",
+  "stations_file": "data/station_lists/by_region/stations_region_Northeast.csv",
+  "station_filter_applied": true,
+  "figures": {
+    "A1_timeseries": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_timeseries_target_by_station.png",
+    "A1_timeseries_per_station": [
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Chum_Phae_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Khon_Kaen_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Nakhon_Ratchasima_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Nong_Khai_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Roi_Et_Rice_Seed_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Sakon_Nakhon_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Surin_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Ubon_Ratchathani_Rice_research_Center.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A1_per_station/A1_timeseries_Udon_Thani_Rice_research_Center.png"
+    ],
+    "A2_missingness": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A2_missingness_per_station.png",
+    "A3_boxplot": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A3_boxplot_target_by_station_topk.png",
+    "A4_scatter": [
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A4_scatter_temp_vs_bph_raw.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A4_scatter_humidity_vs_bph_raw.png",
+      "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A4_scatter_rainfall_vs_bph_raw.png"
+    ],
+    "corr_table_csv": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/corr_per_station_long.csv",
+    "A5_heatmap_pearson": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A5_corr_heatmap_pearson.png",
+    "A5_heatmap_spearman": "/Users/np_sut/project_python_github/SUT_Rice_Project_2024/out_eda_region_northeast_raw/figures/A5_corr_heatmap_spearman.png"
+  },
+  "n_rows": 16434,
+  "n_stations": 9
+}
