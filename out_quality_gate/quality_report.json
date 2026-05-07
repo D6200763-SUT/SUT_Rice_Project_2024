@@ -2,9 +2,7 @@
   "mode": "soft",
   "n_rows_input": 62084,
   "n_cols_input": 66,
-  "missing_mandatory_columns": [
-    "BPH_count"
-  ],
+  "missing_mandatory_columns": [],
   "dropped_rows_bad_date": 0,
   "duplicate_key_rows": 0,
   "soft_fix_dropped_duplicate_rows": 0,
@@ -18,6 +16,7 @@
     "rainfall": 0.0,
     "wind_speed": 0.0,
     "wind_direction": 0.0,
+    "bph_count": 0.0,
     "province_en": 0.0
   },
   "soft_fix_dropped_rows_missing_mandatory": 0,
@@ -66,10 +65,8 @@
     "off_season_bad_count": 0
   },
   "var_share_tol": 0.001,
-  "fail_reasons": [
-    "Missing mandatory columns: ['BPH_count']"
-  ],
-  "pass": false,
+  "fail_reasons": [],
+  "pass": true,
   "n_rows_output": 62084,
   "n_cols_output": 66
 }

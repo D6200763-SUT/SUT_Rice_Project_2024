@@ -54,7 +54,7 @@ DEFAULT_MANDATORY_COLS = [
     "rainfall",
     "wind_speed",
     "wind_direction",
-    "BPH_count",
+    "bph_count",
     "province_en",
 ]
 
