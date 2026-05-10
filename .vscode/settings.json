@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
     "python-envs.defaultEnvManager": "ms-python.python:conda",
     "python-envs.defaultPackageManager": "ms-python.python:conda"
+=======
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+>>>>>>> 2cbc62a (updatecode)
 }

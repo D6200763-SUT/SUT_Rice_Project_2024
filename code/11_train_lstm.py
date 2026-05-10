@@ -58,6 +58,15 @@ def main(argv=None):
     Xva, yva = seq.X_val, seq.y_val
     Xte, yte = seq.X_test, seq.y_test
 
+    import numpy as np
+    print("Checking for NaN in loaded data:")
+    print("Xtr NaN:", np.isnan(Xtr).any())
+    print("ytr NaN:", np.isnan(ytr).any())
+    print("Xva NaN:", np.isnan(Xva).any())
+    print("yva NaN:", np.isnan(yva).any())
+    print("Xte NaN:", np.isnan(Xte).any())
+    print("yte NaN:", np.isnan(yte).any())
+
     window = int(Xtr.shape[1])
     n_features = int(Xtr.shape[2])
 
