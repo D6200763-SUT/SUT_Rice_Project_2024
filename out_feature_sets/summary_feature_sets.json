@@ -1,0 +1,78 @@
+{
+  "input_csv": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_quality_gate/cleaned_raw.csv",
+  "sets": [
+    {
+      "set_name": "core",
+      "out_dir": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/core",
+      "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/core/sequences_window30_h1.npz",
+      "report": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/core/report_model_ready.json",
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    },
+    {
+      "set_name": "context",
+      "out_dir": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/context",
+      "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/context/sequences_window30_h1.npz",
+      "report": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/context/report_model_ready.json",
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    },
+    {
+      "set_name": "full",
+      "out_dir": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/full",
+      "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/full/sequences_window30_h1.npz",
+      "report": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/full/report_model_ready.json",
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    }
+  ],
+  "variety_info": {
+    "topk": 8,
+    "drop_one": true,
+    "top_in": [
+      "var_share_ราชการไม่ไวต่อแสง_in_season",
+      "var_share_ขาวดอกมะลิ_105_in_season",
+      "var_share_กข_6_in_season",
+      "var_share_พันธุ์พื้นเมือง_in_season",
+      "var_share_ปทุมธานี_1_2_in_season",
+      "var_share_ราชการไวต่อแสง_in_season",
+      "var_share_สุพรรณบุรี_1_2_in_season",
+      "var_share_กข_15_in_season"
+    ],
+    "top_off": [
+      "var_share_กขไม่ไวแสง_off_season",
+      "var_share_ราชการไม่ไวแสง_off_season",
+      "var_share_กข_10_off_season",
+      "var_share_ชัยนาท_1_2_off_season",
+      "var_share_ปทุมธานี_1_off_season",
+      "var_share_พิษณุโลก2_60_2_off_season",
+      "var_share_สุพรรณบุรี_1_off_season",
+      "var_share_สุพรรณบุรี_60_90_off_season"
+    ],
+    "dropped_one": {
+      "in": "var_share_ราชการไม่ไวต่อแสง_in_season",
+      "off": "var_share_กขไม่ไวแสง_off_season"
+    },
+    "keep_cols": [
+      "var_share_ขาวดอกมะลิ_105_in_season",
+      "var_share_กข_6_in_season",
+      "var_share_พันธุ์พื้นเมือง_in_season",
+      "var_share_ปทุมธานี_1_2_in_season",
+      "var_share_ราชการไวต่อแสง_in_season",
+      "var_share_สุพรรณบุรี_1_2_in_season",
+      "var_share_กข_15_in_season",
+      "var_other_in_season",
+      "var_share_ราชการไม่ไวแสง_off_season",
+      "var_share_กข_10_off_season",
+      "var_share_ชัยนาท_1_2_off_season",
+      "var_share_ปทุมธานี_1_off_season",
+      "var_share_พิษณุโลก2_60_2_off_season",
+      "var_share_สุพรรณบุรี_1_off_season",
+      "var_share_สุพรรณบุรี_60_90_off_season",
+      "var_other_off_season"
+    ]
+  }
+}
