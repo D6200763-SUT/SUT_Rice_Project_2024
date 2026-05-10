@@ -1,29 +1,29 @@
 {
   "model": "LSTM",
-  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets_nan_safe/core/sequences_window30_h1.npz",
+  "npz": "D:\\AI_Projects\\SUT_Rice_Project_2024\\out_feature_sets\\core\\sequences_window30_h1.npz",
   "window": 30,
   "n_features": 14,
   "train": {
-    "mae": 0.9519782066345215,
-    "rmse": 1.5132968758016099,
-    "r2": 0.20092087984085083
+    "mae": 0.9371984004974365,
+    "rmse": 1.5672845447193726,
+    "r2": 0.14288872480392456
   },
   "val": {
-    "mae": 1.0700751543045044,
-    "rmse": 1.5829033602424443,
-    "r2": 0.2362048625946045
+    "mae": 1.04507315158844,
+    "rmse": 1.6292046655514583,
+    "r2": 0.19086802005767822
   },
   "test_log1p": {
-    "mae": 0.9340208172798157,
-    "rmse": 1.482665352308482,
-    "r2": 0.2058202028274536,
-    "smape": 1.7148457765579224
+    "mae": 0.899692952632904,
+    "rmse": 1.528287240057496,
+    "r2": 0.15619409084320068,
+    "smape": 1.7575173377990723
   },
   "test_raw": {
-    "mae": 27.360559463500977,
-    "rmse": 218.45123347385797,
-    "r2": -0.010204672813415527,
-    "smape": 1.850218415260315
+    "mae": 27.36166763305664,
+    "rmse": 218.67872052968482,
+    "r2": -0.012309670448303223,
+    "smape": 1.8768939971923828
   },
   "meta": {
     "set_name": "core",
@@ -68,7 +68,7 @@
     }
   },
   "hyperparams": {
-    "npz": "out_feature_sets_nan_safe/core/sequences_window30_h1.npz",
+    "npz": "out_feature_sets/core/sequences_window30_h1.npz",
     "out_dir": "out_train/lstm_core",
     "epochs": 50,
     "batch_size": 256,

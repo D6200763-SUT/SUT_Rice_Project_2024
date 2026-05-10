@@ -1,23 +1,18 @@
-# Training report: LSTM
+# Training report: CNN-LSTM
 NPZ: D:\AI_Projects\SUT_Rice_Project_2024\out_feature_sets\core\sequences_window30_h1.npz
 Window=30, Horizon=1, Features=14
 
-## Split counts (samples)
-- train: 42432
-- val:   8262
-- test:  8330
-
 ## Metrics (log1p scale)
-- TEST MAE:  0.8997
-- TEST RMSE: 1.5283
-- TEST R2:   0.1562
-- TEST sMAPE:1.7575
+- TEST MAE:  0.9174
+- TEST RMSE: 1.4909
+- TEST R2:   0.1970
+- TEST sMAPE:1.7362
 
 ## Metrics (raw scale = expm1(log1p))
-- TEST MAE:  27.36
-- TEST RMSE: 218.68
-- TEST R2:   -0.0123
-- TEST sMAPE:1.8769
+- TEST MAE:  27.48
+- TEST RMSE: 218.67
+- TEST R2:   -0.0122
+- TEST sMAPE:1.8713
 
 ## Saved files
 - metrics.json

@@ -1,18 +1,18 @@
 # Training report: Transformer
-NPZ: /home/ai-station/Projects_code/SUT_Rice_Project_2024/out_feature_sets/core/sequences_window30_h1.npz
+NPZ: D:\AI_Projects\SUT_Rice_Project_2024\out_feature_sets\core\sequences_window30_h1.npz
 Window=30, Horizon=1, Features=14
 
 ## Metrics (log1p scale)
-- TEST MAE:  0.9363
-- TEST RMSE: 1.5041
-- TEST R2:   0.1826
-- TEST sMAPE:1.7240
+- TEST MAE:  0.9135
+- TEST RMSE: 1.5029
+- TEST R2:   0.1840
+- TEST sMAPE:1.7161
 
 ## Metrics (raw scale = expm1(log1p))
-- TEST MAE:  27.58
-- TEST RMSE: 218.44
-- TEST R2:   -0.0101
-- TEST sMAPE:1.8609
+- TEST MAE:  27.59
+- TEST RMSE: 218.14
+- TEST R2:   -0.0073
+- TEST sMAPE:1.8522
 
 ## Saved files
 - metrics.json
