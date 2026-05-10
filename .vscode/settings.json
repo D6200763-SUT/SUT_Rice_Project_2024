@@ -1,4 +1,13 @@
 {
+<<<<<<< HEAD
     "python-envs.defaultEnvManager": "ms-python.python:venv",
     "python-envs.defaultPackageManager": "ms-python.python:pip"
+=======
+<<<<<<< HEAD
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+=======
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+>>>>>>> 2cbc62a (updatecode)
+>>>>>>> 539a42e566e74cd5be8a3bd36478a2d7583a69af
 }
