@@ -1,5 +1,5 @@
 {
-  "input_csv": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/out_quality_gate/cleaned_raw.csv",
+  "input_csv": "/home/natthawut/My_projects/SUT_Rice_Project_2024/out_quality_gate/cleaned_raw.csv",
   "sets": [
     {
       "set_name": "core",
