@@ -1,0 +1,85 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/natthawut/My_projects/SUT_Rice_Project_2024/out_feature_sets/core/sequences_window30_h1.npz",
+  "window": 30,
+  "n_features": 14,
+  "train": {
+    "mae": 0.8971420526504517,
+    "rmse": 1.4436713721592724,
+    "r2": 0.27275925874710083
+  },
+  "val": {
+    "mae": 1.043531894683838,
+    "rmse": 1.6188761422632856,
+    "r2": 0.20109468698501587
+  },
+  "test_log1p": {
+    "mae": 0.9890533685684204,
+    "rmse": 1.576704537956369,
+    "r2": 0.10188239812850952,
+    "smape": 1.7074782848358154
+  },
+  "test_raw": {
+    "mae": 29.1324405670166,
+    "rmse": 218.38155578310636,
+    "r2": -0.009560227394104004,
+    "smape": 1.8441523313522339
+  },
+  "meta": {
+    "set_name": "core",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range"
+    ],
+    "window": 30,
+    "horizon": 1,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    }
+  },
+  "hyperparams": {
+    "npz": "out_feature_sets/core/sequences_window30_h1.npz",
+    "out_dir": "out_train/cnn_lstm_core",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": ""
+  }
+}
