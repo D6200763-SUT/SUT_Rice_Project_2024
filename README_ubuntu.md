@@ -88,8 +88,14 @@ python code/inspect_npz_for_nan.py \
 ## 6.1 LSTM
 ```bash
 python code/11_train_lstm_compat.py \
-  --npz out_feature_sets/core/sequences_window30_h1.npz \
-  --out_dir out_train/lstm_core \
+  --npz out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
+  --out_dir out_train_w30_h1/lstm_core \
+  --epochs 120 --batch_size 128 --lr 0.0005 --patience 20 \
+  --clipnorm 1.0 --lstm_units 64 --dropout 0.2
+
+python code/11_train_lstm_compat.py \
+  --npz out_feature_sets_w60_h7/core/sequences_window60_h7.npz \
+  --out_dir out_train_w60_h7/lstm_core \
   --epochs 120 --batch_size 128 --lr 0.0005 --patience 20 \
   --clipnorm 1.0 --lstm_units 64 --dropout 0.2
 ```
@@ -97,8 +103,15 @@ python code/11_train_lstm_compat.py \
 ## 6.2 CNN-LSTM
 ```bash
 python code/12_train_cnn_lstm_compat.py \
-  --npz out_feature_sets/core/sequences_window30_h1.npz \
-  --out_dir out_train/cnn_lstm_core \
+  --npz out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
+  --out_dir out_train_w30_h1/cnn_lstm_core \
+  --epochs 150 --batch_size 128 --lr 0.0005 --patience 25 \
+  --clipnorm 1.0 --conv_filters 64 --kernel_size 5 \
+  --lstm_units 64 --dropout 0.25
+
+python code/12_train_cnn_lstm_compat.py \
+  --npz out_feature_sets_w60_h7/core/sequences_window60_h7.npz \
+  --out_dir out_train_w60_h7/cnn_lstm_core \
   --epochs 150 --batch_size 128 --lr 0.0005 --patience 25 \
   --clipnorm 1.0 --conv_filters 64 --kernel_size 5 \
   --lstm_units 64 --dropout 0.25
@@ -107,8 +120,15 @@ python code/12_train_cnn_lstm_compat.py \
 ## 6.3 Transformer
 ```bash
 python code/13_train_transformer_compat.py \
-  --npz out_feature_sets/core/sequences_window30_h1.npz \
-  --out_dir out_train/transformer_core \
+  --npz out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
+  --out_dir out_train_w30_h1/transformer_core \
+  --epochs 200 --batch_size 128 --lr 0.0005 --patience 30 \
+  --clipnorm 1.0 --d_model 64 --num_layers 2 --num_heads 4 \
+  --ff_dim 128 --dropout 0.2
+
+python code/13_train_transformer_compat.py \
+  --npz out_feature_sets_w60_h7/core/sequences_window60_h7.npz \
+  --out_dir out_train_w60_h7/transformer_core \
   --epochs 200 --batch_size 128 --lr 0.0005 --patience 30 \
   --clipnorm 1.0 --d_model 64 --num_layers 2 --num_heads 4 \
   --ff_dim 128 --dropout 0.2
