@@ -188,6 +188,9 @@ out_train_w60_h7/
 code/run_train_auto.sh \
   out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
   out_train_w30_h1
+code/run_train_auto.sh \
+  out_feature_sets_w30_h1/context/sequences_window30_h1.npz \
+  out_train_w30_h1
 ```
 
 ```bash
