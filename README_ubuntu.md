@@ -141,6 +141,10 @@ python code/13_train_transformer_compat.py \
 python code/summarize_runs.py \
   --root out_train \
   --out out_train/summary
+
+python code/summarize_runs.py \
+  --root out_train_w30_h1 \
+  --out out_train_w30_h1/summary
 ```
 
 Outputs:

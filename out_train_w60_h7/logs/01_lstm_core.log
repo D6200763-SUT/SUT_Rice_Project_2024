@@ -1,0 +1,76 @@
+2026-05-13 06:13:41.784882: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1778627623.938720   91152 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 4620 MB memory:  -> device: 0, name: NVIDIA GeForce GTX 1660 Ti, pci bus id: 0000:01:00.0, compute capability: 7.5
+Epoch 1/120
+2026-05-13 06:13:46.182276: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:473] Loaded cuDNN version 92200
+322/322 - 4s - 11ms/step - loss: 0.7141 - val_loss: 0.7391 - learning_rate: 5.0000e-04
+Epoch 2/120
+322/322 - 2s - 5ms/step - loss: 0.7104 - val_loss: 0.7343 - learning_rate: 5.0000e-04
+Epoch 3/120
+322/322 - 1s - 5ms/step - loss: 0.7080 - val_loss: 0.7227 - learning_rate: 5.0000e-04
+Epoch 4/120
+322/322 - 1s - 4ms/step - loss: 0.7065 - val_loss: 0.7244 - learning_rate: 5.0000e-04
+Epoch 5/120
+322/322 - 1s - 5ms/step - loss: 0.7025 - val_loss: 0.7224 - learning_rate: 5.0000e-04
+Epoch 6/120
+322/322 - 1s - 5ms/step - loss: 0.6986 - val_loss: 0.6921 - learning_rate: 5.0000e-04
+Epoch 7/120
+322/322 - 1s - 5ms/step - loss: 0.6918 - val_loss: 0.6957 - learning_rate: 5.0000e-04
+Epoch 8/120
+322/322 - 1s - 5ms/step - loss: 0.6892 - val_loss: 0.6848 - learning_rate: 5.0000e-04
+Epoch 9/120
+322/322 - 1s - 5ms/step - loss: 0.6814 - val_loss: 0.6954 - learning_rate: 5.0000e-04
+Epoch 10/120
+322/322 - 1s - 5ms/step - loss: 0.6821 - val_loss: 0.7101 - learning_rate: 5.0000e-04
+Epoch 11/120
+322/322 - 1s - 5ms/step - loss: 0.6828 - val_loss: 0.7011 - learning_rate: 5.0000e-04
+Epoch 12/120
+322/322 - 1s - 5ms/step - loss: 0.6803 - val_loss: 0.6894 - learning_rate: 5.0000e-04
+Epoch 13/120
+322/322 - 1s - 5ms/step - loss: 0.6756 - val_loss: 0.6926 - learning_rate: 5.0000e-04
+Epoch 14/120
+322/322 - 1s - 5ms/step - loss: 0.6761 - val_loss: 0.6903 - learning_rate: 5.0000e-04
+Epoch 15/120
+322/322 - 2s - 5ms/step - loss: 0.6742 - val_loss: 0.6743 - learning_rate: 5.0000e-04
+Epoch 16/120
+322/322 - 2s - 5ms/step - loss: 0.6728 - val_loss: 0.6861 - learning_rate: 5.0000e-04
+Epoch 17/120
+322/322 - 2s - 5ms/step - loss: 0.6714 - val_loss: 0.6977 - learning_rate: 5.0000e-04
+Epoch 18/120
+322/322 - 2s - 5ms/step - loss: 0.6697 - val_loss: 0.6902 - learning_rate: 5.0000e-04
+Epoch 19/120
+322/322 - 1s - 5ms/step - loss: 0.6699 - val_loss: 0.6911 - learning_rate: 5.0000e-04
+Epoch 20/120
+322/322 - 1s - 5ms/step - loss: 0.6693 - val_loss: 0.6985 - learning_rate: 5.0000e-04
+Epoch 21/120
+322/322 - 2s - 5ms/step - loss: 0.6713 - val_loss: 0.7064 - learning_rate: 5.0000e-04
+Epoch 22/120
+322/322 - 2s - 5ms/step - loss: 0.6705 - val_loss: 0.7132 - learning_rate: 5.0000e-04
+Epoch 23/120
+322/322 - 2s - 5ms/step - loss: 0.6697 - val_loss: 0.6971 - learning_rate: 5.0000e-04
+Epoch 24/120
+322/322 - 2s - 5ms/step - loss: 0.6681 - val_loss: 0.7186 - learning_rate: 5.0000e-04
+Epoch 25/120
+322/322 - 2s - 5ms/step - loss: 0.6698 - val_loss: 0.6958 - learning_rate: 5.0000e-04
+Epoch 26/120
+322/322 - 2s - 5ms/step - loss: 0.6654 - val_loss: 0.7081 - learning_rate: 2.5000e-04
+Epoch 27/120
+322/322 - 2s - 5ms/step - loss: 0.6634 - val_loss: 0.6927 - learning_rate: 2.5000e-04
+Epoch 28/120
+322/322 - 2s - 5ms/step - loss: 0.6640 - val_loss: 0.7066 - learning_rate: 2.5000e-04
+Epoch 29/120
+322/322 - 2s - 5ms/step - loss: 0.6619 - val_loss: 0.7028 - learning_rate: 2.5000e-04
+Epoch 30/120
+322/322 - 2s - 5ms/step - loss: 0.6613 - val_loss: 0.7148 - learning_rate: 2.5000e-04
+Epoch 31/120
+322/322 - 2s - 5ms/step - loss: 0.6607 - val_loss: 0.7020 - learning_rate: 2.5000e-04
+Epoch 32/120
+322/322 - 2s - 5ms/step - loss: 0.6588 - val_loss: 0.7132 - learning_rate: 2.5000e-04
+Epoch 33/120
+322/322 - 2s - 5ms/step - loss: 0.6621 - val_loss: 0.6978 - learning_rate: 2.5000e-04
+Epoch 34/120
+322/322 - 2s - 5ms/step - loss: 0.6600 - val_loss: 0.7105 - learning_rate: 2.5000e-04
+Epoch 35/120
+322/322 - 1s - 5ms/step - loss: 0.6558 - val_loss: 0.7448 - learning_rate: 2.5000e-04
+[OK] Done: /home/natthawut/My_projects/SUT_Rice_Project_2024/out_train_w60_h7/lstm_core

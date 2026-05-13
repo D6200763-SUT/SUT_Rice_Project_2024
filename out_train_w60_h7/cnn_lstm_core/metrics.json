@@ -1,0 +1,85 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/natthawut/My_projects/SUT_Rice_Project_2024/out_feature_sets_w60_h7/core/sequences_window60_h7.npz",
+  "window": 60,
+  "n_features": 14,
+  "train": {
+    "mae": 0.8723930716514587,
+    "rmse": 1.4282426881608006,
+    "r2": 0.29441094398498535
+  },
+  "val": {
+    "mae": 0.9651067852973938,
+    "rmse": 1.5068067447704816,
+    "r2": 0.2695835828781128
+  },
+  "test_log1p": {
+    "mae": 0.9711052179336548,
+    "rmse": 1.5148256691320385,
+    "r2": 0.20218753814697266,
+    "smape": 1.6732736825942993
+  },
+  "test_raw": {
+    "mae": 29.910608291625977,
+    "rmse": 235.34701772064162,
+    "r2": -0.005517125129699707,
+    "smape": 1.8142870664596558
+  },
+  "meta": {
+    "set_name": "core",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range"
+    ],
+    "window": 60,
+    "horizon": 7,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 41208,
+      "val_samples": 7038,
+      "test_samples": 7106
+    }
+  },
+  "hyperparams": {
+    "npz": "out_feature_sets_w60_h7/core/sequences_window60_h7.npz",
+    "out_dir": "out_train_w60_h7/cnn_lstm_core",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": ""
+  }
+}
