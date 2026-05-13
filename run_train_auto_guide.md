@@ -185,19 +185,19 @@ out_train_w60_h7/
 ถ้ามีไฟล์ข้อมูลหลายชุด สามารถรันทีละชุดด้วยคำสั่งเดิมได้ เช่น
 
 ```bash
-./run_train_auto.sh \
+code/run_train_auto.sh \
   out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
   out_train_w30_h1
 ```
 
 ```bash
-./run_train_auto.sh \
+code/run_train_auto.sh \
   out_feature_sets_w60_h7/core/sequences_window60_h7.npz \
   out_train_w60_h7
 ```
 
 ```bash
-./run_train_auto.sh \
+code/run_train_auto.sh \
   out_feature_sets_w90_h14/core/sequences_window90_h14.npz \
   out_train_w90_h14
 ```
