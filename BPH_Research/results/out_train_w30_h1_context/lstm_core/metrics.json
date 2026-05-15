@@ -1,0 +1,87 @@
+{
+  "model": "LSTM",
+  "npz": "/home/natthawut/My_projects/SUT_Rice_Project_2024/out_feature_sets_w30_h1/context/sequences_window30_h1.npz",
+  "window": 30,
+  "n_features": 18,
+  "train": {
+    "mae": 0.8338712453842163,
+    "rmse": 1.3411883844335097,
+    "r2": 0.37234485149383545
+  },
+  "val": {
+    "mae": 0.9328950643539429,
+    "rmse": 1.4459049969299833,
+    "r2": 0.36269456148147583
+  },
+  "test_log1p": {
+    "mae": 0.8707907795906067,
+    "rmse": 1.4232343107853347,
+    "r2": 0.26821190118789673,
+    "smape": 1.7117915153503418
+  },
+  "test_raw": {
+    "mae": 26.584409713745117,
+    "rmse": 217.35138600892336,
+    "r2": -5.793571472167969e-05,
+    "smape": 1.842132806777954
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 30,
+    "horizon": 1,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    }
+  },
+  "hyperparams": {
+    "npz": "out_feature_sets_w30_h1/context/sequences_window30_h1.npz",
+    "out_dir": "out_train_w30_h1_context/lstm_core",
+    "epochs": 120,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "lstm_units": 64,
+    "dropout": 0.2,
+    "patience": 20,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

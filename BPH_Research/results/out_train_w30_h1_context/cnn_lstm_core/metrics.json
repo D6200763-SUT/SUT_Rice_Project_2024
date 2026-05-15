@@ -1,0 +1,89 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/natthawut/My_projects/SUT_Rice_Project_2024/out_feature_sets_w30_h1/context/sequences_window30_h1.npz",
+  "window": 30,
+  "n_features": 18,
+  "train": {
+    "mae": 0.5164039134979248,
+    "rmse": 0.9616810472846717,
+    "r2": 0.67729651927948
+  },
+  "val": {
+    "mae": 0.6439487934112549,
+    "rmse": 1.1299343509508866,
+    "r2": 0.6107984781265259
+  },
+  "test_log1p": {
+    "mae": 0.6317950487136841,
+    "rmse": 1.1759981481284527,
+    "r2": 0.500373125076294,
+    "smape": 1.6274908781051636
+  },
+  "test_raw": {
+    "mae": 23.986196517944336,
+    "rmse": 216.09867357008466,
+    "r2": 0.0114365816116333,
+    "smape": 1.7444055080413818
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 30,
+    "horizon": 1,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42432,
+      "val_samples": 8262,
+      "test_samples": 8330
+    }
+  },
+  "hyperparams": {
+    "npz": "out_feature_sets_w30_h1/context/sequences_window30_h1.npz",
+    "out_dir": "out_train_w30_h1_context/cnn_lstm_core",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

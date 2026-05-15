@@ -2,6 +2,9 @@
 
 set -e
 
+# ค้นหา directory ของ script นี้ (ใช้งานได้ไม่ว่าจะรันจาก directory ไหน)
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # ==============================
 # รับค่าจากผู้ใช้ตอนรัน
 # ==============================
@@ -13,10 +16,10 @@ ROOT_OUT="$2"
 # ==============================
 if [ -z "$NPZ" ] || [ -z "$ROOT_OUT" ]; then
   echo "Usage:"
-  echo "  ./run_train_auto.sh <npz_file> <output_dir>"
+  echo "  ./scripts/run_train_auto.sh <npz_file> <output_dir>"
   echo ""
   echo "Example:"
-  echo "  ./run_train_auto.sh out_feature_sets_w60_h7/core/sequences_window60_h7.npz out_train_w60_h7"
+  echo "  ./scripts/run_train_auto.sh results/out_feature_sets_w60_h7/core/sequences_window60_h7.npz results/out_train_w60_h7"
   exit 1
 fi
 
@@ -42,7 +45,7 @@ echo "======================================"
 echo "1) Train LSTM"
 echo "======================================"
 
-python code/11_train_lstm_compat.py \
+python "$SCRIPT_DIR/11_train_lstm_compat.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/lstm_core" \
   --epochs 120 --batch_size 128 --lr 0.0005 --patience 20 \
@@ -54,7 +57,7 @@ echo "======================================"
 echo "2) Train CNN-LSTM"
 echo "======================================"
 
-python code/12_train_cnn_lstm_compat.py \
+python "$SCRIPT_DIR/12_train_cnn_lstm_compat.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/cnn_lstm_core" \
   --epochs 150 --batch_size 128 --lr 0.0005 --patience 25 \
@@ -67,7 +70,7 @@ echo "======================================"
 echo "3) Train Transformer"
 echo "======================================"
 
-python code/13_train_transformer_compat.py \
+python "$SCRIPT_DIR/13_train_transformer_compat.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/transformer_core" \
   --epochs 200 --batch_size 128 --lr 0.0005 --patience 30 \
@@ -80,7 +83,7 @@ echo "======================================"
 echo "4) Summarize Runs"
 echo "======================================"
 
-python code/summarize_runs.py \
+python "$SCRIPT_DIR/summarize_runs.py" \
   --root "$ROOT_OUT" \
   --out "$ROOT_OUT/summary" \
   2>&1 | tee "$ROOT_OUT/logs/04_summary.log"

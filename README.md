@@ -1,25 +1,42 @@
-# SUT_Rice_Project_2024
+# SUT Rice Project 2024
 
-## วิธีการใช้งานสคริปต์ `code/main_program.py`
+งานวิจัยการพยากรณ์ **เพลี้ยกระโดดสีน้ำตาล (BPH)** ในนาข้าวภาคตะวันออกเฉียงเหนือของไทย  
+ด้วยโมเดล Deep Learning: LSTM, CNN-LSTM, Transformer
 
-สคริปต์นี้ช่วยเตรียมข้อมูลรายวันและสร้างกราฟเส้นของคอลัมน์ที่ต้องการเทียบกับวันที่ในชุดข้อมูลเดียวกัน
+---
 
-1. เปิดเทอร์มินัลที่โฟลเดอร์โปรเจกต์นี้ (`/Users/np_sut/project_python_github/SUT_Rice_Project_2024`).
-2. รันคำสั่งต่อไปนี้ (แทนที่รายชื่อคอลัมน์หรือรหัสสถานีตามที่ต้องการ):
+## โครงสร้างโปรเจกต์
 
-```bash
-python code/main_program.py \
-  --plot_columns temp bph_raw \
-  --station_id 101 \
-  --tail 365
+```
+SUT_Rice_Project_2024/
+└── BPH_Research/
+    ├── scripts/       ← Python scripts + run_train_auto.sh
+    ├── data/          ← ข้อมูล CSV ดิบ (BPH + สภาพอากาศ + ข้าว)
+    ├── results/       ← output ทั้งหมด (quality gate, feature sets, training)
+    ├── manuscript/    ← บทความ .docx
+    ├── docs/          ← คู่มือเพิ่มเติม
+    └── CLAUDE.md      ← คำสั่งและรายละเอียด pipeline ทั้งหมด
 ```
 
-คำอธิบายอาร์กิวเมนต์หลัก:
+---
 
-- `--raw_csv` กำหนดไฟล์ข้อมูลรายวัน (ค่าเริ่มต้น `data/env_daily_with_rice_monthly_raw.csv`).
-- `--out_dir` โฟลเดอร์เอาต์พุตสำหรับไฟล์และรูป (`data/out_model_ready_v1`).
-- `--plot_columns` รายชื่อคอลัมน์ที่ต้องการสร้างกราฟ (จำเป็นถ้าต้องการกราฟ).
-- `--station_id` เลือกข้อมูลเฉพาะสถานี (ปล่อยว่างเพื่อใช้ทุกสถานี).
-- `--tail` จำกัดจำนวนแถวล่าสุดก่อนพล็อต (ตั้งเป็นค่าติดลบหรือ 0 เพื่อใช้ทั้งหมด).
+## เริ่มต้นใช้งาน
 
-ไฟล์รูปจะถูกบันทึกเป็น `data/out_model_ready_v1/figures/selected_columns_plot.png` และสคริปต์จะแสดงสถานะการประมวลผลในเทอร์มินัล
+```bash
+cd BPH_Research
+```
+
+ดูคำสั่ง pipeline ทั้งหมดได้ที่ **[BPH_Research/CLAUDE.md](BPH_Research/CLAUDE.md)**
+
+---
+
+## Pipeline โดยย่อ
+
+| ขั้นตอน | คำสั่ง |
+|---|---|
+| 1. ตรวจสอบข้อมูล | `python scripts/quality_gate.py ...` |
+| 2. สร้าง sequences | `python scripts/03_build_feature_sets_and_sequences_v2_nan_safe.py ...` |
+| 3. เทรนโมเดล | `./scripts/run_train_auto.sh results/out_feature_sets_.../... results/out_train_...` |
+| 4. สรุปผล | `python scripts/summarize_runs.py ...` |
+
+> รันทุกคำสั่งจาก `BPH_Research/` เสมอ
