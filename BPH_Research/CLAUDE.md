@@ -167,3 +167,58 @@ pkill -f "train_"       # หยุดทุก Python process ที่กำ�
 ps aux | grep python    # ดู PID
 kill <PID>
 ```
+
+---
+
+## บันทึกการทดลอง — 2026-05-18
+
+### สิ่งที่ทำไปแล้ว
+
+#### NPZ ที่สร้างแล้ว (ครบทุก feature set)
+| Window | Horizon | ที่เก็บ |
+|---|---|---|
+| W=30 | H=1 | `results/out_feature_sets_w30_h1/` |
+| W=30 | H=7 | `results/out_feature_sets_w30_h7/` ← สร้างวันนี้ |
+| W=60 | H=7 | `results/out_feature_sets_w60_h7/` |
+| W=90 | H=14 | `results/out_feature_sets_w90_h14/` |
+
+`out_feature_sets_w30_h7/` มี trimmed/ เพิ่มเติม (top-10 features จาก permutation importance)
+
+#### โมเดลที่เทรนแล้ว
+| Run folder | โมเดล | Feature set | W | H | R² (log1p) |
+|---|---|---|---|---|---|
+| `out_train_w60_h7/` | LSTM, CNN-LSTM, Transformer | core | 60 | 7 | 0.135–0.202 |
+| `out_train_w60_h7_context/` | LSTM, CNN-LSTM, Transformer | context | 60 | 7 | 0.264–0.463 |
+| `out_train_w60_h7_full/` | LSTM, CNN-LSTM, Transformer | full | 60 | 7 | 0.192–0.334 |
+| `out_train_w30_h7/cnn_lstm_context` | CNN-LSTM | context | 30 | 7 | 0.484 |
+| `out_train_w30_h7/cnn_lstm_context_quality` | CNN-LSTM (QUALITY preset) | context | 30 | 7 | 0.452 |
+| `out_train_w30_h7/cnn_lstm_context_weighted` | CNN-LSTM + spike weight α=3.0 | context | 30 | 7 | -0.370 (แย่) |
+| `out_train_w30_h7/cnn_lstm_context_weighted2` | CNN-LSTM + spike weight α=1.5 | context | 30 | 7 | 0.175 (แย่) |
+| `out_train_w30_h7/cnn_lstm_trimmed` | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 |
+
+#### ผลสรุปสุดท้าย (Top 3)
+| อันดับ | โมเดล | Feature set | W | H | R² | r2_raw |
+|---|---|---|---|---|---|---|
+| 🥇 | CNN-LSTM | context | 30 | 1 | **0.500** | +0.011 |
+| 🥈 | CNN-LSTM | context | 30 | 7 | 0.484 | +0.004 |
+| 🥉 | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 | **+0.007** |
+
+ดูตารางเต็มได้ที่: `results/summary_final/comparison.csv`
+
+### บทเรียนสำคัญ
+- **CNN-LSTM + context (18f) ดีที่สุดเสมอ** — rice variety context ช่วยได้จริง
+- **W=30 ดีกว่า W=60/90** สำหรับโมเดลนี้
+- **full (36f) แพ้ context (18f)** — feature เพิ่มใน full เป็น noise
+- **Weighted loss ไม่ช่วย** — log1p compress spike อยู่แล้ว
+- **Trimmed (10f) ทำให้ r2_raw เป็นบวกครั้งแรก** — lat/lon/temp_range สำคัญที่สุด
+- **Feature สำคัญ (permutation importance):** longitude > latitude > temp_range > month_sin > doy_sin
+
+### Script ใหม่ที่สร้างวันนี้
+- `scripts/12_train_cnn_lstm_weighted.py` — CNN-LSTM พร้อม spike-aware sample_weight
+
+### สิ่งที่ยังไม่ได้ทำ (แนวทางต่อ)
+- [ ] เทรน LSTM และ Transformer บน W=30 H=7 context (ยังทำแค่ CNN-LSTM)
+- [ ] ลอง Two-stage model: classify spike/no-spike ก่อน แล้ว regression
+- [ ] เพิ่ม feature จาก NDVI หรือ soil moisture (ถ้ามีข้อมูล)
+- [ ] Cross-validation แบบ temporal (ปัจจุบัน split เดียว train 2015–2018)
+- [ ] เขียนผลลงบทความ manuscript/
