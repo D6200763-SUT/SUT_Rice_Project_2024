@@ -1,0 +1,108 @@
+{
+  "model": "Transformer",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w60_h7/full/sequences_window60_h7.npz",
+  "window": 60,
+  "n_features": 36,
+  "train": {
+    "mae": 0.589020311832428,
+    "rmse": 1.0794260219051848,
+    "r2": 0.5969735383987427
+  },
+  "val": {
+    "mae": 0.7264926433563232,
+    "rmse": 1.2273021824509847,
+    "r2": 0.5154278874397278
+  },
+  "test_log1p": {
+    "mae": 0.8227013945579529,
+    "rmse": 1.4403642232210845,
+    "r2": 0.27869296073913574,
+    "smape": 1.6478815078735352
+  },
+  "test_raw": {
+    "mae": 28.39829444885254,
+    "rmse": 234.9054580437628,
+    "r2": -0.0017476081848144531,
+    "smape": 1.7685779333114624
+  },
+  "meta": {
+    "set_name": "full",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude",
+      "var_share_ราชการไม่ไวต่อแสง_in_season",
+      "var_share_ขาวดอกมะลิ_105_in_season",
+      "var_share_กข_6_in_season",
+      "var_share_พันธุ์พื้นเมือง_in_season",
+      "var_share_ปทุมธานี_1_2_in_season",
+      "var_share_ราชการไวต่อแสง_in_season",
+      "var_share_สุพรรณบุรี_1_2_in_season",
+      "var_share_กข_15_in_season",
+      "var_other_in_season",
+      "var_share_กขไม่ไวแสง_off_season",
+      "var_share_ราชการไม่ไวแสง_off_season",
+      "var_share_กข_10_off_season",
+      "var_share_ชัยนาท_1_2_off_season",
+      "var_share_ปทุมธานี_1_off_season",
+      "var_share_พิษณุโลก2_60_2_off_season",
+      "var_share_สุพรรณบุรี_1_off_season",
+      "var_share_สุพรรณบุรี_60_90_off_season",
+      "var_other_off_season"
+    ],
+    "window": 60,
+    "horizon": 7,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 41208,
+      "val_samples": 7038,
+      "test_samples": 7106
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w60_h7/full/sequences_window60_h7.npz",
+    "out_dir": "results/out_train_w60_h7_full/transformer_core",
+    "epochs": 200,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "d_model": 64,
+    "num_layers": 2,
+    "num_heads": 4,
+    "ff_dim": 128,
+    "dropout": 0.2,
+    "patience": 30,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

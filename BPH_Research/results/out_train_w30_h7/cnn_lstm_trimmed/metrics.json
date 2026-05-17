@@ -1,0 +1,81 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w30_h7/trimmed/sequences_window30_h7.npz",
+  "window": 30,
+  "n_features": 10,
+  "train": {
+    "mae": 0.5172286033630371,
+    "rmse": 0.9628155352115303,
+    "r2": 0.6772241592407227
+  },
+  "val": {
+    "mae": 0.6272368431091309,
+    "rmse": 1.1295234550516335,
+    "r2": 0.6064004898071289
+  },
+  "test_log1p": {
+    "mae": 0.6525356769561768,
+    "rmse": 1.213782334373349,
+    "r2": 0.47049522399902344,
+    "smape": 1.6190024614334106
+  },
+  "test_raw": {
+    "mae": 25.187360763549805,
+    "rmse": 219.2202712883779,
+    "r2": 0.00673365592956543,
+    "smape": 1.7356089353561401
+  },
+  "meta": {
+    "set_name": "trimmed",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "longitude",
+      "latitude",
+      "temp_range",
+      "month_sin",
+      "doy_sin",
+      "month_cos",
+      "humidity_7d_mean",
+      "area_rai_in_season",
+      "doy_cos",
+      "humidity"
+    ],
+    "window": 30,
+    "horizon": 7,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42228,
+      "val_samples": 8058,
+      "test_samples": 8126
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w30_h7/trimmed/sequences_window30_h7.npz",
+    "out_dir": "results/out_train_w30_h7/cnn_lstm_trimmed",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

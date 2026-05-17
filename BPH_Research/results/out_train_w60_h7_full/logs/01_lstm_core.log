@@ -1,0 +1,84 @@
+2026-05-18 01:02:22.319773: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-05-18 01:02:22.319809: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-05-18 01:02:22.321121: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-05-18 01:02:23.168751: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-05-18 01:02:23.762445: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:23.796993: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:23.797222: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.874631: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.874962: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.875201: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.949644: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.949923: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.950193: I external/local_xla/xla/stream_executor/cuda/cuda_executor.cc:901] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2026-05-18 01:02:24.950331: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1929] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 7186 MB memory:  -> device: 0, name: NVIDIA GeForce GTX 1070 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1
+2026-05-18 01:02:25.101291: I external/local_tsl/tsl/platform/default/subprocess.cc:304] Start cannot spawn child process: No such file or directory
+Epoch 1/120
+2026-05-18 01:02:28.416024: I external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:454] Loaded cuDNN version 8904
+2026-05-18 01:02:29.425868: I external/local_xla/xla/service/service.cc:168] XLA service 0x78bd6713d270 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2026-05-18 01:02:29.425907: I external/local_xla/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce GTX 1070 Ti, Compute Capability 6.1
+2026-05-18 01:02:29.433358: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779040949.536635   14971 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+322/322 - 8s - loss: 0.5519 - val_loss: 0.4930 - lr: 5.0000e-04 - 8s/epoch - 25ms/step
+Epoch 2/120
+322/322 - 4s - loss: 0.4653 - val_loss: 0.4934 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 3/120
+322/322 - 4s - loss: 0.4355 - val_loss: 0.4885 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 4/120
+322/322 - 4s - loss: 0.4179 - val_loss: 0.4780 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 5/120
+322/322 - 4s - loss: 0.4086 - val_loss: 0.4895 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 6/120
+322/322 - 4s - loss: 0.4029 - val_loss: 0.4788 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 7/120
+322/322 - 4s - loss: 0.3914 - val_loss: 0.5625 - lr: 5.0000e-04 - 4s/epoch - 11ms/step
+Epoch 8/120
+322/322 - 4s - loss: 0.3866 - val_loss: 0.5642 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 9/120
+322/322 - 4s - loss: 0.3787 - val_loss: 0.5033 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 10/120
+322/322 - 4s - loss: 0.3701 - val_loss: 0.5009 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 11/120
+322/322 - 4s - loss: 0.3665 - val_loss: 0.4550 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 12/120
+322/322 - 4s - loss: 0.3634 - val_loss: 0.5267 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 13/120
+322/322 - 4s - loss: 0.3593 - val_loss: 0.4922 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 14/120
+322/322 - 4s - loss: 0.3579 - val_loss: 0.5362 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 15/120
+322/322 - 4s - loss: 0.3537 - val_loss: 0.5369 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 16/120
+322/322 - 4s - loss: 0.3489 - val_loss: 0.5343 - lr: 5.0000e-04 - 4s/epoch - 11ms/step
+Epoch 17/120
+322/322 - 4s - loss: 0.3459 - val_loss: 0.4975 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 18/120
+322/322 - 4s - loss: 0.3508 - val_loss: 0.5239 - lr: 5.0000e-04 - 4s/epoch - 11ms/step
+Epoch 19/120
+322/322 - 4s - loss: 0.3406 - val_loss: 0.5164 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 20/120
+322/322 - 4s - loss: 0.3408 - val_loss: 0.5446 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 21/120
+322/322 - 4s - loss: 0.3389 - val_loss: 0.5871 - lr: 5.0000e-04 - 4s/epoch - 12ms/step
+Epoch 22/120
+322/322 - 4s - loss: 0.3225 - val_loss: 0.5118 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 23/120
+322/322 - 4s - loss: 0.3211 - val_loss: 0.4931 - lr: 2.5000e-04 - 4s/epoch - 11ms/step
+Epoch 24/120
+322/322 - 4s - loss: 0.3171 - val_loss: 0.5518 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 25/120
+322/322 - 4s - loss: 0.3152 - val_loss: 0.5064 - lr: 2.5000e-04 - 4s/epoch - 11ms/step
+Epoch 26/120
+322/322 - 4s - loss: 0.3153 - val_loss: 0.5727 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 27/120
+322/322 - 4s - loss: 0.3134 - val_loss: 0.5405 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 28/120
+322/322 - 4s - loss: 0.3107 - val_loss: 0.5239 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 29/120
+322/322 - 4s - loss: 0.3130 - val_loss: 0.5646 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 30/120
+322/322 - 4s - loss: 0.3076 - val_loss: 0.5346 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+Epoch 31/120
+322/322 - 4s - loss: 0.3083 - val_loss: 0.5597 - lr: 2.5000e-04 - 4s/epoch - 12ms/step
+[OK] Done: /home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_train_w60_h7_full/lstm_core
