@@ -4,3 +4,11 @@ __pycache__/
 .DS_Store
 *.egg-info/
 .env
+
+# Large/binary generated files (regenerable from scripts)
+*.npz
+*.keras
+*.joblib
+*.log
+results/**/model_ready_daily.csv
+results/**/model_ready_daily_scaled.csv
