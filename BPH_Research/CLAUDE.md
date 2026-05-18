@@ -185,6 +185,45 @@ kill <PID>
 
 ---
 
+## สถานะ Repo — 2026-05-18
+
+### Scripts (9 files — ทั้งหมดผ่านการทดสอบแล้ว)
+```
+scripts/
+├── quality_gate.py                    ← pipeline step 1
+├── build_sequences.py                 ← pipeline step 2
+├── inspect_npz_for_nan.py             ← pipeline step 3
+├── run_train_auto.sh                  ← pipeline step 4 (launcher)
+├── train_lstm.py                      ← เทรน LSTM
+├── train_cnn_lstm.py                  ← เทรน CNN-LSTM
+├── train_transformer.py               ← เทรน Transformer
+├── train_utils.py                     ← shared utilities
+└── summarize_runs.py                  ← pipeline step 5
+```
+
+### Results (11 folders)
+```
+results/
+├── out_quality_gate/                  ← cleaned_raw.csv
+├── out_feature_sets_w30_h1/           ← NPZ (W=30, H=1)
+├── out_feature_sets_w30_h7/           ← NPZ (W=30, H=7) + trimmed/
+├── out_feature_sets_w60_h7/           ← NPZ (W=60, H=7)
+├── out_feature_sets_w90_h14/          ← NPZ (W=90, H=14)
+├── out_train_w30_h1_context/          ← BEST: CNN-LSTM R²=0.500
+├── out_train_w30_h7/                  ← 5 runs (context/trimmed)
+├── out_train_w60_h7/                  ← core feature set
+├── out_train_w60_h7_context/          ← context feature set
+├── out_train_w60_h7_full/             ← full feature set
+└── summary_final/                     ← comparison.csv/md ครบทุก run
+```
+
+### Git / .gitignore
+- Working tree clean, sync กับ origin/main
+- Ignored (ไม่ track): `*.npz`, `*.keras`, `*.joblib`, `*.log`, `model_ready_daily*.csv`
+- Tracked: metrics, predictions, figures, reports, source data
+
+---
+
 ## บันทึกการทดลอง — 2026-05-18
 
 ### สิ่งที่ทำไปแล้ว
