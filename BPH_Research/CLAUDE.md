@@ -24,6 +24,31 @@ BPH_Research/
 
 > **Working directory:** รันทุกคำสั่งจาก `BPH_Research/` เสมอ
 
+## Python Environment (เครื่องนี้)
+
+```
+/home/ai-station/my_project/.tf251p310/bin/python
+```
+
+| Package | Version |
+|---|---|
+| Python | 3.10.12 |
+| TensorFlow | 2.15.1 |
+| numpy | 1.26.4 |
+| pandas | 2.3.3 |
+| scikit-learn | 1.7.2 |
+| joblib | 1.5.3 |
+
+ใช้แทน `python3` ทุกครั้ง:
+```bash
+/home/ai-station/my_project/.tf251p310/bin/python scripts/quality_gate.py ...
+```
+
+หรือ activate ก่อน:
+```bash
+source /home/ai-station/my_project/.tf251p310/bin/activate
+```
+
 ## Pipeline (รันตามลำดับ)
 
 ```
