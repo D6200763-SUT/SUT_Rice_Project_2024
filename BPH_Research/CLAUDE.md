@@ -95,13 +95,6 @@ python scripts/summarize_runs.py \
 ```
 ได้: `summary/comparison.csv` และ `summary/comparison.md`
 
-### 6) Visualization (optional)
-```bash
-python scripts/main_program.py \
-  --plot_columns temp bph_raw \
-  --station_id 101 --tail 365
-```
-
 ## แนวทางเลือก Window / Horizon / โมเดล
 
 | Horizon (H) | Window (W) | roll_days | โมเดลแนะนำ |
@@ -143,7 +136,6 @@ results/out_train_w{W}_h{H}/
 | `scripts/summarize_runs.py` | รวม metrics ทุก run เป็นตาราง |
 | `scripts/inspect_npz_for_nan.py` | ตรวจ NaN/Inf ใน NPZ |
 | `scripts/run_train_auto.sh` | รันโมเดลทั้ง 3 ต่อเนื่อง + สรุปผล |
-| `scripts/main_program.py` | plot time-series รายสถานี |
 
 ## NPZ Format
 
@@ -219,9 +211,6 @@ CNN-LSTM ชนะทุกโมเดลบน W=30 H=7 context อย่า�
 - **Trimmed (10f) ทำให้ r2_raw เป็นบวกครั้งแรก** — lat/lon/temp_range สำคัญที่สุด
 - **Feature สำคัญ (permutation importance):** longitude > latitude > temp_range > month_sin > doy_sin
 - **CNN-LSTM ชนะ LSTM/Transformer ชัดเจนบน W30 H7** — ยืนยันว่า CNN-LSTM เป็น best model
-
-### Script ใหม่ที่สร้าง
-- `scripts/12_train_cnn_lstm_weighted.py` — CNN-LSTM พร้อม spike-aware sample_weight
 
 ### Manuscript
 - `manuscript/BPH_DeepLearning_Results_2026-05-18.md` — สรุปผลและวิเคราะห์ครบทุก run พร้อม feature importance, fair comparison, และแนวทางต่อ
