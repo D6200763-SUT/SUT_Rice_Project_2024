@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-งานวิจัยการพยากรณ์ **Brown Planthopper (BPH / เพลี้ยกระโดดสีน้ำตาล)** ในนาข้าวภาคตะวันออกเฉียงเหนือของไทย  
+งานวิจัยการพยากรณ์ **Brown Planthopper (BPH / เพลี้ยกระโดดสีน้ำตาล)** 
 ใช้ข้อมูลสภาพแวดล้อมรายวันร่วมกับโมเดล Deep Learning 3 ประเภท: **LSTM**, **CNN-LSTM**, **Transformer**
 
 ## โครงสร้างโฟลเดอร์
