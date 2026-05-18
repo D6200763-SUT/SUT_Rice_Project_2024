@@ -184,24 +184,30 @@ kill <PID>
 
 `out_feature_sets_w30_h7/` มี trimmed/ เพิ่มเติม (top-10 features จาก permutation importance)
 
-#### โมเดลที่เทรนแล้ว
+#### โมเดลที่เทรนแล้ว (ครบทุก run)
 | Run folder | โมเดล | Feature set | W | H | R² (log1p) |
 |---|---|---|---|---|---|
 | `out_train_w60_h7/` | LSTM, CNN-LSTM, Transformer | core | 60 | 7 | 0.135–0.202 |
 | `out_train_w60_h7_context/` | LSTM, CNN-LSTM, Transformer | context | 60 | 7 | 0.264–0.463 |
 | `out_train_w60_h7_full/` | LSTM, CNN-LSTM, Transformer | full | 60 | 7 | 0.192–0.334 |
+| `out_train_w30_h7/lstm_context` | LSTM | context | 30 | 7 | 0.363 |
 | `out_train_w30_h7/cnn_lstm_context` | CNN-LSTM | context | 30 | 7 | 0.484 |
+| `out_train_w30_h7/transformer_context` | Transformer | context | 30 | 7 | 0.368 |
 | `out_train_w30_h7/cnn_lstm_context_quality` | CNN-LSTM (QUALITY preset) | context | 30 | 7 | 0.452 |
 | `out_train_w30_h7/cnn_lstm_context_weighted` | CNN-LSTM + spike weight α=3.0 | context | 30 | 7 | -0.370 (แย่) |
 | `out_train_w30_h7/cnn_lstm_context_weighted2` | CNN-LSTM + spike weight α=1.5 | context | 30 | 7 | 0.175 (แย่) |
 | `out_train_w30_h7/cnn_lstm_trimmed` | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 |
 
-#### ผลสรุปสุดท้าย (Top 3)
+#### ผลสรุปสุดท้าย — เปรียบเทียบยุติธรรม W=30 H=7 context
 | อันดับ | โมเดล | Feature set | W | H | R² | r2_raw |
 |---|---|---|---|---|---|---|
 | 🥇 | CNN-LSTM | context | 30 | 1 | **0.500** | +0.011 |
-| 🥈 | CNN-LSTM | context | 30 | 7 | 0.484 | +0.004 |
+| 🥈 | CNN-LSTM | context | 30 | 7 | **0.484** | +0.004 |
 | 🥉 | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 | **+0.007** |
+| 4 | Transformer | context | 30 | 7 | 0.368 | +0.002 |
+| 5 | LSTM | context | 30 | 7 | 0.363 | +0.009 |
+
+CNN-LSTM ชนะทุกโมเดลบน W=30 H=7 context อย่างชัดเจน (+12 R² points)
 
 ดูตารางเต็มได้ที่: `results/summary_final/comparison.csv`
 
@@ -212,12 +218,12 @@ kill <PID>
 - **Weighted loss ไม่ช่วย** — log1p compress spike อยู่แล้ว
 - **Trimmed (10f) ทำให้ r2_raw เป็นบวกครั้งแรก** — lat/lon/temp_range สำคัญที่สุด
 - **Feature สำคัญ (permutation importance):** longitude > latitude > temp_range > month_sin > doy_sin
+- **CNN-LSTM ชนะ LSTM/Transformer ชัดเจนบน W30 H7** — ยืนยันว่า CNN-LSTM เป็น best model
 
-### Script ใหม่ที่สร้างวันนี้
+### Script ใหม่ที่สร้าง
 - `scripts/12_train_cnn_lstm_weighted.py` — CNN-LSTM พร้อม spike-aware sample_weight
 
 ### สิ่งที่ยังไม่ได้ทำ (แนวทางต่อ)
-- [ ] เทรน LSTM และ Transformer บน W=30 H=7 context (ยังทำแค่ CNN-LSTM)
 - [ ] ลอง Two-stage model: classify spike/no-spike ก่อน แล้ว regression
 - [ ] เพิ่ม feature จาก NDVI หรือ soil moisture (ถ้ามีข้อมูล)
 - [ ] Cross-validation แบบ temporal (ปัจจุบัน split เดียว train 2015–2018)
