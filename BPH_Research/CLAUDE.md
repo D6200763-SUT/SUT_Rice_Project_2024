@@ -223,8 +223,11 @@ CNN-LSTM ชนะทุกโมเดลบน W=30 H=7 context อย่า�
 ### Script ใหม่ที่สร้าง
 - `scripts/12_train_cnn_lstm_weighted.py` — CNN-LSTM พร้อม spike-aware sample_weight
 
+### Manuscript
+- `manuscript/BPH_DeepLearning_Results_2026-05-18.md` — สรุปผลและวิเคราะห์ครบทุก run พร้อม feature importance, fair comparison, และแนวทางต่อ
+
 ### สิ่งที่ยังไม่ได้ทำ (แนวทางต่อ)
 - [ ] ลอง Two-stage model: classify spike/no-spike ก่อน แล้ว regression
-- [ ] เพิ่ม feature จาก NDVI หรือ soil moisture (ถ้ามีข้อมูล)
+- [ ] Spatial model: Graph Neural Network หรือ ConvLSTM ระหว่างสถานี
 - [ ] Cross-validation แบบ temporal (ปัจจุบัน split เดียว train 2015–2018)
-- [ ] เขียนผลลงบทความ manuscript/
+- [ ] เพิ่ม feature จาก NDVI หรือ soil moisture (ถ้ามีข้อมูล)
