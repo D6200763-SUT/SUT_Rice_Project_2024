@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from train_seq_utils_compat import (
+from train_utils import (
     set_seed, try_enable_tf_memory_growth,
     load_sequences_npz, make_out_dir,
     compute_metrics, compute_smape, inverse_log1p, assert_all_finite,

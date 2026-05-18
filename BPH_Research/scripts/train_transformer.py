@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-11_train_lstm_compat.py
-Same as 11_train_lstm_v2.py but imports train_seq_utils_compat.py (old sklearn friendly).
+13_train_transformer_compat.py
+Transformer trainer compatible with older scikit-learn (uses train_seq_utils_compat.py).
+
+Usage:
+python code/13_train_transformer_compat.py --npz out_feature_sets/core/sequences_window30_h1.npz --out_dir out_train/transformer_core
 """
 
 from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from train_seq_utils_compat import (
+from train_utils import (
     set_seed, try_enable_tf_memory_growth,
     load_sequences_npz, make_out_dir,
     compute_metrics, compute_smape, inverse_log1p, assert_all_finite,
@@ -18,13 +21,42 @@ from train_seq_utils_compat import (
     plot_training_history, plot_scatter_true_pred, plot_residual_hist, plot_timeseries_one_station
 )
 
-def build_model(window: int, n_features: int, lstm_units: int, dropout: float, lr: float, clipnorm: float):
+def transformer_encoder_block(x, num_heads: int, key_dim: int, ff_dim: int, dropout: float):
+    from tensorflow.keras import layers
+    attn = layers.MultiHeadAttention(num_heads=num_heads, key_dim=key_dim, dropout=dropout)
+    x_attn = attn(x, x)
+    x = layers.Add()([x, x_attn])
+    x = layers.LayerNormalization(epsilon=1e-6)(x)
+
+    ff = layers.Dense(ff_dim, activation="relu")(x)
+    ff = layers.Dropout(dropout)(ff)
+    ff = layers.Dense(int(x.shape[-1]))(ff)
+    x = layers.Add()([x, ff])
+    x = layers.LayerNormalization(epsilon=1e-6)(x)
+    return x
+
+def build_model(window: int, n_features: int, d_model: int, num_layers: int, num_heads: int,
+                ff_dim: int, dropout: float, lr: float, clipnorm: float):
     import tensorflow as tf
     from tensorflow.keras import layers, models, optimizers
+
     inp = layers.Input(shape=(window, n_features))
-    x = layers.LSTM(lstm_units, dropout=dropout)(inp)
+    x = layers.Dense(d_model)(inp)
+
+    pos = tf.range(start=0, limit=window, delta=1)
+    pos_emb = layers.Embedding(input_dim=window, output_dim=d_model)(pos)
+    x = x + pos_emb
+    x = layers.Dropout(dropout)(x)
+
+    key_dim = max(8, d_model // max(1, num_heads))
+    for _ in range(num_layers):
+        x = transformer_encoder_block(x, num_heads=num_heads, key_dim=key_dim, ff_dim=ff_dim, dropout=dropout)
+
+    x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dense(64, activation="relu")(x)
+    x = layers.Dropout(dropout)(x)
     out = layers.Dense(1)(x)
+
     opt = optimizers.Adam(learning_rate=lr, clipnorm=clipnorm if clipnorm > 0 else None)
     model = models.Model(inp, out)
     model.compile(optimizer=opt, loss=tf.keras.losses.Huber())
@@ -34,13 +66,16 @@ def parse_args(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("--npz", required=True)
     p.add_argument("--out_dir", required=True)
-    p.add_argument("--epochs", type=int, default=50)
+    p.add_argument("--epochs", type=int, default=80)
     p.add_argument("--batch_size", type=int, default=256)
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--clipnorm", type=float, default=1.0)
-    p.add_argument("--lstm_units", type=int, default=64)
+    p.add_argument("--d_model", type=int, default=64)
+    p.add_argument("--num_layers", type=int, default=2)
+    p.add_argument("--num_heads", type=int, default=4)
+    p.add_argument("--ff_dim", type=int, default=128)
     p.add_argument("--dropout", type=float, default=0.2)
-    p.add_argument("--patience", type=int, default=8)
+    p.add_argument("--patience", type=int, default=12)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--plot_station", default="")
     return p.parse_args(argv)
@@ -65,7 +100,8 @@ def main(argv=None):
     import tensorflow as tf
     from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint, TerminateOnNaN
 
-    model = build_model(window, n_features, args.lstm_units, args.dropout, args.lr, args.clipnorm)
+    model = build_model(window, n_features, args.d_model, args.num_layers, args.num_heads,
+                        args.ff_dim, args.dropout, args.lr, args.clipnorm)
 
     ckpt_path = out_dir / "model_best.keras"
     callbacks = [
@@ -92,10 +128,18 @@ def main(argv=None):
     yte_raw = inverse_log1p(yte); yhat_te_raw = inverse_log1p(yhat_te)
     m_te_raw = compute_metrics(yte_raw, yhat_te_raw); m_te_raw["smape"] = compute_smape(yte_raw, yhat_te_raw)
 
-    metrics = {"model":"LSTM","npz":str(Path(args.npz).resolve()),
-               "window":window,"n_features":n_features,
-               "train":m_tr,"val":m_va,"test_log1p":m_te,"test_raw":m_te_raw,
-               "meta":seq.meta,"hyperparams":vars(args)}
+    metrics = {
+        "model":"Transformer",
+        "npz": str(Path(args.npz).resolve()),
+        "window": window,
+        "n_features": n_features,
+        "train": m_tr,
+        "val": m_va,
+        "test_log1p": m_te,
+        "test_raw": m_te_raw,
+        "meta": seq.meta,
+        "hyperparams": vars(args),
+    }
     save_json(out_dir/"metrics.json", metrics)
 
     save_predictions_csv(out_dir,"train",ytr,yhat_tr,seq.y_date_train,seq.station_train,also_raw=True)
@@ -113,7 +157,7 @@ def main(argv=None):
             plot_timeseries_one_station(df_st,out_dir/"figures"/f"timeseries_test_{st}.png",f"Test station={st}: true vs pred")
 
     write_text_report(out_dir/"REPORT.md",[
-        "# Training report: LSTM",
+        "# Training report: Transformer",
         f"NPZ: {Path(args.npz).resolve()}",
         f"Window={window}, Horizon={seq.meta.get('horizon','?')}, Features={n_features}",
         "",

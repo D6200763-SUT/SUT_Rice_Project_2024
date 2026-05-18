@@ -42,19 +42,19 @@ python scripts/quality_gate.py \
 ### 2) สร้าง Sliding Window Sequences (NPZ)
 ใช้ nan-safe เสมอ — ตัวอย่าง 3 ชุดหลัก:
 ```bash
-python scripts/03_build_feature_sets_and_sequences_v2_nan_safe.py \
+python scripts/build_sequences.py \
   --input_csv results/out_quality_gate/cleaned_raw.csv \
   --out_dir results/out_feature_sets_w30_h1 \
   --window 30 --horizon 1 --roll_days 7 \
   --all_sets --require_consecutive
 
-python scripts/03_build_feature_sets_and_sequences_v2_nan_safe.py \
+python scripts/build_sequences.py \
   --input_csv results/out_quality_gate/cleaned_raw.csv \
   --out_dir results/out_feature_sets_w60_h7 \
   --window 60 --horizon 7 --roll_days 7 \
   --all_sets --require_consecutive
 
-python scripts/03_build_feature_sets_and_sequences_v2_nan_safe.py \
+python scripts/build_sequences.py \
   --input_csv results/out_quality_gate/cleaned_raw.csv \
   --out_dir results/out_feature_sets_w90_h14 \
   --window 90 --horizon 14 --roll_days 14 \
@@ -128,11 +128,11 @@ results/out_train_w{W}_h{H}/
 | ไฟล์ | หน้าที่ |
 |---|---|
 | `scripts/quality_gate.py` | ตรวจสอบ + ทำความสะอาดข้อมูลดิบ (data contract) |
-| `scripts/03_build_feature_sets_and_sequences_v2_nan_safe.py` | สร้าง sliding window NPZ (nan-safe) |
-| `scripts/11_train_lstm_compat.py` | เทรน LSTM |
-| `scripts/12_train_cnn_lstm_compat.py` | เทรน CNN-LSTM |
-| `scripts/13_train_transformer_compat.py` | เทรน Transformer |
-| `scripts/train_seq_utils_compat.py` | shared utilities (load NPZ, metrics, plots) |
+| `scripts/build_sequences.py` | สร้าง sliding window NPZ (nan-safe) |
+| `scripts/train_lstm.py` | เทรน LSTM |
+| `scripts/train_cnn_lstm.py` | เทรน CNN-LSTM |
+| `scripts/train_transformer.py` | เทรน Transformer |
+| `scripts/train_utils.py` | shared utilities (load NPZ, metrics, plots) |
 | `scripts/summarize_runs.py` | รวม metrics ทุก run เป็นตาราง |
 | `scripts/inspect_npz_for_nan.py` | ตรวจ NaN/Inf ใน NPZ |
 | `scripts/run_train_auto.sh` | รันโมเดลทั้ง 3 ต่อเนื่อง + สรุปผล |

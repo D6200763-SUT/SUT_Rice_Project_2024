@@ -45,7 +45,7 @@ echo "======================================"
 echo "1) Train LSTM"
 echo "======================================"
 
-python "$SCRIPT_DIR/11_train_lstm_compat.py" \
+python "$SCRIPT_DIR/train_lstm.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/lstm_core" \
   --epochs 120 --batch_size 128 --lr 0.0005 --patience 20 \
@@ -57,7 +57,7 @@ echo "======================================"
 echo "2) Train CNN-LSTM"
 echo "======================================"
 
-python "$SCRIPT_DIR/12_train_cnn_lstm_compat.py" \
+python "$SCRIPT_DIR/train_cnn_lstm.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/cnn_lstm_core" \
   --epochs 150 --batch_size 128 --lr 0.0005 --patience 25 \
@@ -70,7 +70,7 @@ echo "======================================"
 echo "3) Train Transformer"
 echo "======================================"
 
-python "$SCRIPT_DIR/13_train_transformer_compat.py" \
+python "$SCRIPT_DIR/train_transformer.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/transformer_core" \
   --epochs 200 --batch_size 128 --lr 0.0005 --patience 30 \
