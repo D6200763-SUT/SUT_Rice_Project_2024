@@ -99,8 +99,8 @@ python scripts/inspect_npz_for_nan.py \
 chmod +x scripts/run_train_auto.sh   # ครั้งแรกครั้งเดียว
 
 ./scripts/run_train_auto.sh \
-  results/out_feature_sets_w30_h1/core/sequences_window30_h1.npz \
-  results/out_train_w30_h1
+  results/out_feature_sets_w30_h1/context/sequences_window30_h1.npz \
+  results/out_train_w30_h1_context
 ```
 
 รันแบบ background (SSH-safe):
@@ -115,8 +115,8 @@ tail -f train_w60_h7.log
 ### 5) สรุปผลเปรียบเทียบ
 ```bash
 python scripts/summarize_runs.py \
-  --root results/out_train_w30_h1 \
-  --out results/out_train_w30_h1/summary
+  --root results/out_train_w30_h1_context \
+  --out results/out_train_w30_h1_context/summary
 ```
 ได้: `summary/comparison.csv` และ `summary/comparison.md`
 
@@ -131,21 +131,19 @@ python scripts/summarize_runs.py \
 ## โครงสร้าง results/
 
 ```
-results/out_feature_sets_w{W}_h{H}/
-  core/       ← สภาพอากาศ + target
-  context/    ← core + rice variety context
-  full/       ← core + context + เพิ่มเติม
-
-results/out_train_w{W}_h{H}/
-  lstm_core/
-  cnn_lstm_core/
-  transformer_core/
-  summary/
-  logs/
-    01_lstm_core.log
-    02_cnn_lstm_core.log
-    03_transformer_core.log
-    04_summary.log
+results/
+├── out_quality_gate/                  ← cleaned_raw.csv, quality_report.json
+├── out_feature_sets_w30_h1/           ← NPZ: core/ context/ full/
+├── out_feature_sets_w30_h7/           ← NPZ: core/ context/ full/ trimmed/
+├── out_feature_sets_w60_h7/           ← NPZ: core/ context/ full/
+├── out_feature_sets_w90_h14/          ← NPZ: core/ context/ full/
+├── out_train_w30_h1_context/          ← BEST (R²=0.500): lstm/ cnn_lstm/ transformer/
+├── out_train_w30_h7/                  ← lstm_context/ cnn_lstm_context/ cnn_lstm_context_quality/
+│                                          cnn_lstm_trimmed/ transformer_context/
+├── out_train_w60_h7/                  ← core feature set
+├── out_train_w60_h7_context/          ← context feature set
+├── out_train_w60_h7_full/             ← full feature set
+└── summary_final/                     ← comparison.csv, comparison.md
 ```
 
 ## Scripts หลัก
@@ -201,19 +199,18 @@ kill <PID>
 
 `out_feature_sets_w30_h7/` มี trimmed/ เพิ่มเติม (top-10 features จาก permutation importance)
 
-#### โมเดลที่เทรนแล้ว (ครบทุก run)
+#### โมเดลที่เทรนแล้ว (folders ที่เก็บไว้)
 | Run folder | โมเดล | Feature set | W | H | R² (log1p) |
 |---|---|---|---|---|---|
+| `out_train_w30_h1_context/` | LSTM, CNN-LSTM, Transformer | context | 30 | 1 | 0.268–0.500 |
+| `out_train_w30_h7/cnn_lstm_context` | CNN-LSTM | context | 30 | 7 | 0.484 |
+| `out_train_w30_h7/cnn_lstm_context_quality` | CNN-LSTM (QUALITY preset) | context | 30 | 7 | 0.452 |
+| `out_train_w30_h7/cnn_lstm_trimmed` | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 |
+| `out_train_w30_h7/transformer_context` | Transformer | context | 30 | 7 | 0.368 |
+| `out_train_w30_h7/lstm_context` | LSTM | context | 30 | 7 | 0.363 |
 | `out_train_w60_h7/` | LSTM, CNN-LSTM, Transformer | core | 60 | 7 | 0.135–0.202 |
 | `out_train_w60_h7_context/` | LSTM, CNN-LSTM, Transformer | context | 60 | 7 | 0.264–0.463 |
 | `out_train_w60_h7_full/` | LSTM, CNN-LSTM, Transformer | full | 60 | 7 | 0.192–0.334 |
-| `out_train_w30_h7/lstm_context` | LSTM | context | 30 | 7 | 0.363 |
-| `out_train_w30_h7/cnn_lstm_context` | CNN-LSTM | context | 30 | 7 | 0.484 |
-| `out_train_w30_h7/transformer_context` | Transformer | context | 30 | 7 | 0.368 |
-| `out_train_w30_h7/cnn_lstm_context_quality` | CNN-LSTM (QUALITY preset) | context | 30 | 7 | 0.452 |
-| `out_train_w30_h7/cnn_lstm_context_weighted` | CNN-LSTM + spike weight α=3.0 | context | 30 | 7 | -0.370 (แย่) |
-| `out_train_w30_h7/cnn_lstm_context_weighted2` | CNN-LSTM + spike weight α=1.5 | context | 30 | 7 | 0.175 (แย่) |
-| `out_train_w30_h7/cnn_lstm_trimmed` | CNN-LSTM | trimmed (10f) | 30 | 7 | 0.470 |
 
 #### ผลสรุปสุดท้าย — เปรียบเทียบยุติธรรม W=30 H=7 context
 | อันดับ | โมเดล | Feature set | W | H | R² | r2_raw |
