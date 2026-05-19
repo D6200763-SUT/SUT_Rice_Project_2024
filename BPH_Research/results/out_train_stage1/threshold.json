@@ -1,0 +1,6 @@
+{
+  "spike_threshold": 1.0986123085021973,
+  "quantile": 0.75,
+  "computed_from": "y_train",
+  "note": "log1p(bph_count) — use spike_threshold in Stage 2 to define spike labels"
+}

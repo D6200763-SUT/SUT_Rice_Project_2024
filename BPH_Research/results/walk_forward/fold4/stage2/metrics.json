@@ -1,0 +1,83 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/walk_forward/fold4/sequences_wf.npz",
+  "window": 30,
+  "n_features": 18,
+  "train": {
+    "mae": 0.620899498462677,
+    "rmse": 0.8559406320292455,
+    "r2": -0.02920091152191162
+  },
+  "val": {
+    "mae": 0.538849413394928,
+    "rmse": 0.718764595215263,
+    "r2": -0.02376556396484375
+  },
+  "test_log1p": {
+    "mae": 0.535940945148468,
+    "rmse": 0.6621504239211252,
+    "r2": -0.2231581211090088,
+    "smape": 0.10013354569673538
+  },
+  "test_raw": {
+    "mae": 168.7506866455078,
+    "rmse": 618.3081755888402,
+    "r2": -0.00266873836517334,
+    "smape": 0.5027999877929688
+  },
+  "meta": {
+    "fold": 4,
+    "feature_set": "context",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 30,
+    "horizon": 7,
+    "spike_threshold": 100.0,
+    "train_start": "2015-01-01",
+    "train_end": "2018-07-01",
+    "val_start": "2018-07-02",
+    "val_end": "2019-03-31",
+    "test_start": "2019-04-01",
+    "test_end": "2019-12-31",
+    "counts": {
+      "train": 42228,
+      "val": 9282,
+      "test": 9350
+    }
+  },
+  "hyperparams": {
+    "npz": "results/walk_forward/fold4/sequences_wf.npz",
+    "out_dir": "results/walk_forward/fold4/stage2",
+    "epochs": 150,
+    "batch_size": 64,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": "",
+    "spike_only": true,
+    "spike_threshold": 100.0
+  }
+}

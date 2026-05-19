@@ -1,0 +1,14 @@
+{
+  "conv_filters": 128,
+  "kernel_size": 3,
+  "lstm_units": 256,
+  "dropout": 0.16784179225549817,
+  "lr": 0.0006506093473790008,
+  "batch_size": 256,
+  "clipnorm": 0.5,
+  "epochs": 150,
+  "patience": 25,
+  "r2_log1p": 0.5100914239883423,
+  "val_loss": 0.3799063563346863,
+  "r2_raw": 0.01134347915649414
+}

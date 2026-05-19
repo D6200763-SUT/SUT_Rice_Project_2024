@@ -12,6 +12,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import numpy as np
+
 from train_utils import (
     set_seed, try_enable_tf_memory_growth,
     load_sequences_npz, make_out_dir,
@@ -54,6 +56,10 @@ def parse_args(argv=None):
     p.add_argument("--patience", type=int, default=10)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--plot_station", default="")
+    p.add_argument("--spike_only", action="store_true",
+                   help="Train on spike samples only (Stage 2 mode)")
+    p.add_argument("--spike_threshold", type=float, default=100.0,
+                   help="bph_raw threshold for spike mask when y_spike absent from NPZ")
     return p.parse_args(argv)
 
 def main(argv=None):
@@ -70,6 +76,40 @@ def main(argv=None):
     assert_all_finite("X_train", Xtr); assert_all_finite("y_train", ytr)
     assert_all_finite("X_val", Xva);   assert_all_finite("y_val", yva)
     assert_all_finite("X_test", Xte);  assert_all_finite("y_test", yte)
+
+    # Local copies — spike_only can filter without mutating the seq dataclass
+    y_date_train, y_date_val, y_date_test = seq.y_date_train, seq.y_date_val, seq.y_date_test
+    station_train, station_val, station_test = seq.station_train, seq.station_val, seq.station_test
+
+    if args.spike_only:
+        raw_npz = np.load(Path(args.npz).expanduser().resolve(), allow_pickle=True)
+        if "y_spike_train" in raw_npz.files:
+            mask_tr = raw_npz["y_spike_train"] == 1
+            mask_va = raw_npz["y_spike_val"]   == 1
+            mask_te = raw_npz["y_spike_test"]  == 1
+        else:
+            # Fallback: derive spike mask from log1p target
+            mask_tr = inverse_log1p(seq.y_train) > args.spike_threshold
+            mask_va = inverse_log1p(seq.y_val)   > args.spike_threshold
+            mask_te = inverse_log1p(seq.y_test)  > args.spike_threshold
+
+        Xtr, ytr = Xtr[mask_tr], ytr[mask_tr]
+        Xva, yva = Xva[mask_va], yva[mask_va]
+        Xte, yte = Xte[mask_te], yte[mask_te]
+        y_date_train  = y_date_train[mask_tr]
+        y_date_val    = y_date_val[mask_va]
+        y_date_test   = y_date_test[mask_te]
+        station_train = station_train[mask_tr]
+        station_val   = station_val[mask_va]
+        station_test  = station_test[mask_te]
+
+        print(f"[spike_only] train={mask_tr.sum()} val={mask_va.sum()} test={mask_te.sum()}")
+
+        if mask_tr.sum() < 50:
+            raise RuntimeError(
+                f"spike_only: train samples too few ({mask_tr.sum()}). "
+                "Lower --spike_threshold or check the NPZ spike labels."
+            )
 
     window = int(Xtr.shape[1]); n_features = int(Xtr.shape[2])
 
@@ -118,17 +158,17 @@ def main(argv=None):
     }
     save_json(out_dir/"metrics.json", metrics)
 
-    save_predictions_csv(out_dir,"train",ytr,yhat_tr,seq.y_date_train,seq.station_train,also_raw=True)
-    save_predictions_csv(out_dir,"val",yva,yhat_va,seq.y_date_val,seq.station_val,also_raw=True)
-    pred_test = save_predictions_csv(out_dir,"test",yte,yhat_te,seq.y_date_test,seq.station_test,also_raw=True)
+    save_predictions_csv(out_dir,"train",ytr,yhat_tr,y_date_train,station_train,also_raw=True)
+    save_predictions_csv(out_dir,"val",yva,yhat_va,y_date_val,station_val,also_raw=True)
+    pred_test = save_predictions_csv(out_dir,"test",yte,yhat_te,y_date_test,station_test,also_raw=True)
 
     plot_training_history(hist.history, out_dir/"figures"/"loss_curve.png")
     plot_scatter_true_pred(yte,yhat_te,out_dir/"figures"/"scatter_true_pred_log1p.png","Test: true vs pred (log1p)")
     plot_residual_hist(yte,yhat_te,out_dir/"figures"/"residual_hist_log1p.png","Test residuals (log1p)")
 
-    st = args.plot_station.strip() or pick_station_for_plot(seq.station_test)
-    if st and len(seq.y_date_test)==len(yte) and len(seq.station_test)==len(yte):
-        df_st = subset_by_station(yte,yhat_te,seq.y_date_test,seq.station_test,st)
+    st = args.plot_station.strip() or pick_station_for_plot(station_test)
+    if st and len(y_date_test)==len(yte) and len(station_test)==len(yte):
+        df_st = subset_by_station(yte,yhat_te,y_date_test,station_test,st)
         if len(df_st)>0:
             plot_timeseries_one_station(df_st,out_dir/"figures"/f"timeseries_test_{st}.png",f"Test station={st}: true vs pred")
 

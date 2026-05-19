@@ -1,0 +1,113 @@
+{
+  "model": "Two-stage CNN-LSTM (Stage2=Regression)",
+  "stage": 2,
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w30_h7/context/sequences_window30_h7.npz",
+  "window": 30,
+  "n_features": 18,
+  "spike_threshold": 1.0986123085021973,
+  "pred_threshold_stage1": 0.5,
+  "spike_mask_counts": {
+    "train": 14724,
+    "val": 3276,
+    "test": 2872
+  },
+  "spike_only_val": {
+    "mae": 1.417135238647461,
+    "rmse": 1.827622890802284,
+    "r2": 0.3342244625091553,
+    "smape": 1.1503863334655762,
+    "n_samples": 3276
+  },
+  "spike_only_test": {
+    "mae": 1.5678964853286743,
+    "rmse": 2.0563249336665166,
+    "r2": 0.09185904264450073,
+    "smape": 1.1312094926834106,
+    "n_samples": 2872
+  },
+  "full_test_log1p": {
+    "mae": 0.701370446401328,
+    "rmse": 1.384657542861904,
+    "r2": 0.31091467896287106,
+    "smape": 0.5617564173084826
+  },
+  "full_test_raw": {
+    "mae": 25.64707722505557,
+    "rmse": 219.26758372980987,
+    "r2": 0.006304718293473455,
+    "smape": 0.6649509281944074
+  },
+  "vs_baseline": {
+    "baseline_r2_log1p": 0.4798,
+    "baseline_r2_raw": 0.0041,
+    "baseline_rmse_raw": 219.51,
+    "two_stage_r2_log1p": 0.31091467896287106,
+    "two_stage_r2_raw": 0.006304718293473455,
+    "two_stage_rmse_raw": 219.26758372980987,
+    "beat_r2_log1p": false,
+    "beat_r2_raw": true,
+    "beat_rmse_raw": true
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 30,
+    "horizon": 7,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42228,
+      "val_samples": 8058,
+      "test_samples": 8126
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w30_h7/context/sequences_window30_h7.npz",
+    "stage1_dir": "results/out_train_stage1",
+    "out_dir": "results/out_train_stage2",
+    "epochs": 200,
+    "patience": 35,
+    "batch_size": 256,
+    "lr": 0.0004329,
+    "conv_filters": 128,
+    "kernel_size": 5,
+    "lstm_units": 32,
+    "dropout": 0.1094,
+    "clipnorm": 2.0,
+    "pred_threshold": 0.5,
+    "seed": 42
+  }
+}

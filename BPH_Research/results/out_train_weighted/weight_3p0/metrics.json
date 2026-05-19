@@ -1,0 +1,68 @@
+{
+  "model": "CNN-LSTM-Weighted",
+  "spike_weight": 3.0,
+  "spike_threshold": 1.0986123085021973,
+  "n_train_spikes": 10521,
+  "window": 30,
+  "n_features": 18,
+  "train": {
+    "mae": 0.6268554925918579,
+    "rmse": 1.0405271146175252,
+    "r2": 0.6230171918869019
+  },
+  "val": {
+    "mae": 0.8413491249084473,
+    "rmse": 1.3365709019045233,
+    "r2": 0.44887763261795044
+  },
+  "test_log1p": {
+    "mae": 0.8278055787086487,
+    "rmse": 1.3508346891229703,
+    "r2": 0.34416794776916504,
+    "smape": 1.5925770998001099
+  },
+  "test_raw": {
+    "mae": 26.99515724182129,
+    "rmse": 219.0882563317806,
+    "r2": 0.007929563522338867,
+    "smape": 1.7255301475524902
+  },
+  "spike_only_val": {
+    "r2": -0.1378929615020752,
+    "rmse": 1.6596861409300445,
+    "mae": 1.2189465761184692,
+    "n_samples": 1991
+  },
+  "spike_only_test": {
+    "r2": -0.34052717685699463,
+    "rmse": 1.7548531947451964,
+    "mae": 1.2962570190429688,
+    "n_samples": 1780
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w30_h7/context/sequences_window30_h7.npz",
+    "stage1_threshold_json": "results/out_train_stage1/threshold.json",
+    "out_dir": "results/out_train_weighted",
+    "spike_weights": [
+      2.0,
+      3.0,
+      5.0,
+      8.0
+    ],
+    "epochs": 200,
+    "patience": 35,
+    "batch_size": 256,
+    "lr": 0.0004329,
+    "conv_filters": 128,
+    "kernel_size": 5,
+    "lstm_units": 32,
+    "dropout": 0.1094,
+    "clipnorm": 2.0,
+    "seed": 42
+  },
+  "beat_baseline": {
+    "r2_log1p": false,
+    "r2_raw": true,
+    "rmse_raw": true
+  }
+}

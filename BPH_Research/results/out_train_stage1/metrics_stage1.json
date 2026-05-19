@@ -1,0 +1,129 @@
+{
+  "model": "CNN-LSTM-Classifier",
+  "stage": 1,
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w30_h7/context/sequences_window30_h7.npz",
+  "window": 30,
+  "n_features": 18,
+  "spike_threshold": 1.0986123085021973,
+  "quantile": 0.75,
+  "pred_threshold": 0.5,
+  "class_weight": {
+    "0": 1.0,
+    "1": 3.0136869118905047
+  },
+  "train": {
+    "accuracy": 0.8333096523633609,
+    "precision": 0.6182423254550394,
+    "recall": 0.8652219370782245,
+    "f1": 0.7211725094078035,
+    "confusion_matrix": [
+      [
+        26086,
+        5621
+      ],
+      [
+        1418,
+        9103
+      ]
+    ],
+    "n_pos": 10521,
+    "n_neg": 31707
+  },
+  "val": {
+    "accuracy": 0.7561429635145197,
+    "precision": 0.503968253968254,
+    "recall": 0.8292315419387243,
+    "f1": 0.6269223466869186,
+    "confusion_matrix": [
+      [
+        4442,
+        1625
+      ],
+      [
+        340,
+        1651
+      ]
+    ],
+    "n_pos": 1991,
+    "n_neg": 6067
+  },
+  "test": {
+    "accuracy": 0.7797194191484125,
+    "precision": 0.4982590529247911,
+    "recall": 0.803932584269663,
+    "f1": 0.615219260533104,
+    "confusion_matrix": [
+      [
+        4905,
+        1441
+      ],
+      [
+        349,
+        1431
+      ]
+    ],
+    "n_pos": 1780,
+    "n_neg": 6346
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 30,
+    "horizon": 7,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 42228,
+      "val_samples": 8058,
+      "test_samples": 8126
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w30_h7/context/sequences_window30_h7.npz",
+    "out_dir": "results/out_train_stage1",
+    "quantile": 0.75,
+    "epochs": 150,
+    "patience": 25,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "pred_threshold": 0.5,
+    "seed": 42
+  }
+}

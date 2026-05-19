@@ -1,0 +1,137 @@
+{
+  "model": "CNN-LSTM-Classifier",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/walk_forward/fold3/sequences_wf.npz",
+  "recall": 0.8990182328190743,
+  "precision": 0.332987012987013,
+  "f1": 0.48597422289613346,
+  "auc": 0.9154233167238465,
+  "best_threshold": 0.3,
+  "confusion_matrix": [
+    [
+      4259,
+      1284
+    ],
+    [
+      72,
+      641
+    ]
+  ],
+  "class_weight": {
+    "0": 0.5347498367855659,
+    "1": 7.694278394534586
+  },
+  "val_at_best_thr": {
+    "threshold": 0.3,
+    "precision": 0.45010183299389,
+    "recall": 0.7222222222222222,
+    "f1": 0.5545796737766625,
+    "confusion_matrix": [
+      [
+        5002,
+        540
+      ],
+      [
+        170,
+        442
+      ]
+    ]
+  },
+  "all_thresholds": [
+    {
+      "threshold": 0.3,
+      "precision": 0.332987012987013,
+      "recall": 0.8990182328190743,
+      "f1": 0.48597422289613346,
+      "confusion_matrix": [
+        [
+          4259,
+          1284
+        ],
+        [
+          72,
+          641
+        ]
+      ]
+    },
+    {
+      "threshold": 0.35,
+      "precision": 0.3439697133585722,
+      "recall": 0.8920056100981767,
+      "f1": 0.4964871194379391,
+      "confusion_matrix": [
+        [
+          4330,
+          1213
+        ],
+        [
+          77,
+          636
+        ]
+      ]
+    },
+    {
+      "threshold": 0.4,
+      "precision": 0.3610005685048323,
+      "recall": 0.8906030855539971,
+      "f1": 0.5137540453074434,
+      "confusion_matrix": [
+        [
+          4419,
+          1124
+        ],
+        [
+          78,
+          635
+        ]
+      ]
+    },
+    {
+      "threshold": 0.45,
+      "precision": 0.37537180249851276,
+      "recall": 0.884992987377279,
+      "f1": 0.5271512113617377,
+      "confusion_matrix": [
+        [
+          4493,
+          1050
+        ],
+        [
+          82,
+          631
+        ]
+      ]
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.3847102342786683,
+      "recall": 0.8751753155680224,
+      "f1": 0.5344753747323341,
+      "confusion_matrix": [
+        [
+          4545,
+          998
+        ],
+        [
+          89,
+          624
+        ]
+      ]
+    }
+  ],
+  "hyperparams": {
+    "npz": "results/walk_forward/fold3/sequences_wf.npz",
+    "out_dir": "results/walk_forward/fold3/stage1",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "class_weight": "auto",
+    "recall_target": 0.8,
+    "seed": 42
+  }
+}
