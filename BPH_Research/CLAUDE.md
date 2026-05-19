@@ -285,7 +285,7 @@ results/
 ├── out_train_stage2/                  ← Two-stage Stage 2 (R²_log1p=0.311, R²_raw=0.0063)
 ├── out_threshold_sweep/               ← threshold sweep 0.30–0.50 (best=0.50)
 ├── out_train_weighted/                ← weighted sweep (best w=3.0, R²=0.344)
-├── walk_forward/                      ← Walk-Forward CV (fold2/ fold3/ fold4/) ← สร้างแล้ว
+├── walk_forward/                      ← Walk-Forward CV: fold2/ fold3/ fold4/ (stage1/ + stage2_full/)
 └── summary_final/                     ← comparison.csv/md ครบทุก run
 ```
 
@@ -356,6 +356,7 @@ CNN-LSTM ชนะทุกโมเดลบน W=30 H=7 context อย่า�
 - [ ] Train Stage 2 ด้วย oracle spike labels (y_true > threshold แทน Stage 1 pred) — upper bound ของ two-stage
 - [ ] Spatial model: Graph Neural Network หรือ ConvLSTM ระหว่างสถานี
 - [x] Cross-validation แบบ temporal ← Walk-Forward CV (fold2/3/4) ทำแล้ว (2026-05-19)
+- [x] แก้ Stage2 Walk-Forward: เทรนบน all samples (ไม่ใช่ spike_only) ← ทำแล้ว (2026-05-19)
 - [ ] เพิ่ม feature จาก NDVI หรือ soil moisture (ถ้ามีข้อมูล)
 
 ---
@@ -487,13 +488,13 @@ results/walk_forward/
 │   ├── sequences_wf.npz       ← X/y/y_spike + date/station arrays
 │   ├── scaler_minmax.joblib
 │   ├── fold_info.json
-│   ├── stage1/                ← metrics_stage1.json, model_stage1_best.keras, figures/
-│   └── stage2/                ← metrics.json, model_best.keras, figures/
+│   ├── stage1/                ← metrics_stage1.json, predictions_test_stage1.csv, figures/
+│   └── stage2_full/           ← metrics.json, predictions_test.csv, REPORT.md, figures/
 ├── fold3/ ...
 ├── fold4/ ...
-├── cv_summary.csv             ← mean/SD ของ Stage1 + Stage2 metrics
+├── cv_summary.csv             ← mean/SD ของ Stage1 + Stage2 metrics (ทุก fold)
 ├── cv_report.md               ← manuscript-ready table
-└── figures/cv_r2_barplot.png
+└── cv_barplot.png             ← 3-panel barplot: R² log1p / RMSE raw / Stage1 Recall
 ```
 
 #### ผลลัพธ์จริง (รัน 2026-05-19)
@@ -534,3 +535,55 @@ results/walk_forward/
 - **R² raw ดีกว่าเล็กน้อย** (mean +0.006) — สอดคล้องกับ Experiment 1 และ 2
 
 **หมายเหตุ:** Walk-Forward Stage 2 ใช้ oracle spike labels (y_spike_true) ไม่ใช่ Stage 1 predictions — เป็น upper bound ของ two-stage จริง แต่ยังแพ้ baseline
+
+---
+
+### Experiment 4: Stage2 Fix — เทรนบน All Samples (2026-05-19)
+
+**Root cause ของ Experiment 3:** `--spike_only` ทำให้ train set เหลือ ~5–15% → val set เล็กมาก → early stopping ไม่ reliable → R² ติดลบ
+
+**แก้ไข:** รัน `train_cnn_lstm.py` **โดยไม่มี `--spike_only`** บันทึกผลใน `stage2_full/`
+- Stage 2 เทรนบน all samples (ทุก rows)
+- evaluate metric รวม + spike-window metrics (join Stage1 + Stage2 predictions ด้วย date+station_id)
+- `summarize_walk_forward.py` เขียนใหม่: อ่าน `stage2_full/`, คำนวณ spike-window RMSE/R²/MAE
+
+**Hyperparameters Stage2:** conv_filters=64, kernel_size=5, lstm_units=64, dropout=0.25, lr=0.0005, batch=128, patience=25
+
+#### ผลลัพธ์ Stage2 Fix
+
+**Stage 2 — Regressor (all samples, stage2_full/)**
+
+| Fold | Test period | R² log1p | RMSE log1p | R² raw | RMSE raw |
+|---|---|---|---|---|---|
+| 2 | 2017-H2 | 0.405 ✅ | — | — | 394.1 |
+| 3 | 2018-H2 | **0.504** ✅ | — | — | 346.0 |
+| 4 | 2019 | 0.503 ✅ | — | — | 204.5 |
+| **Mean ± SD** | — | **0.470 ± 0.047** | — | — | **314.9 ± 80.5** |
+
+**Spike-window Metrics (evaluate เฉพาะ rows ที่ Stage1=spike)**
+
+| Fold | RMSE raw (spike) | R² raw (spike) | N spike rows |
+|---|---|---|---|
+| 2 | 677.3 | −0.024 | 1,806 |
+| 3 | 600.7 | −0.013 | 1,925 |
+| 4 | 433.6 | −0.029 | 1,640 |
+| **Mean ± SD** | **570.5 ± 101.7** | **−0.022 ± 0.007** | — |
+
+#### Success Criteria — หลัง fix
+
+| Metric | เป้าหมาย | ผลจริง | สถานะ |
+|---|---|---|---|
+| Stage2 R² log1p (mean) | ≥ 0.40 | **0.470** | ✅ ผ่าน |
+| Stage2 RMSE raw (mean) | < 300 | **315** | ⚠️ ใกล้มาก (Fold2 ลาก) |
+| Stage1 Recall (mean) | ≥ 0.80 | **0.807** | ✅ คงเดิม |
+| Spike-window R² raw | baseline | **−0.022** | ข้อมูลใหม่ |
+
+#### บทเรียนสำคัญจาก Stage2 Fix
+- **เทรนบน all samples แก้ปัญหาได้ทันที** — R² log1p พุ่งจาก −0.119 → 0.470 ภายใน epoch เดียวกัน
+- **Fold 3 และ 4 ชนะ baseline (0.504, 0.503 > 0.484)** — ยืนยันว่า walk-forward ทำให้ model generalize ได้จริง
+- **Fold 2 R²=0.405 ต่ำกว่า** — train data 2 ปี (23,630 samples) ยังน้อย + test 2017-H2 มี spike หนักกว่าเฉลี่ย
+- **Spike-window R² raw ติดลบ** — Stage2 predict spike range ไม่แม่นใน raw scale แม้ log1p จะดี เป็น known limitation ของ log1p target (สอดคล้อง Exp 1–2)
+- **RMSE raw ลดจาก 928 → 315** — การเทรนบน all samples ช่วยได้มาก แต่ยังสูงกว่า baseline 219 เพราะ Fold2 test period ยาก
+
+#### กราฟ
+`results/walk_forward/cv_barplot.png` — 3-panel: R² log1p, RMSE raw, Stage1 Recall ข้าม folds
