@@ -1,0 +1,91 @@
+{
+  "model": "CNN-LSTM",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w90_h14/context/sequences_window90_h14.npz",
+  "window": 90,
+  "n_features": 18,
+  "train": {
+    "mae": 0.5619335174560547,
+    "rmse": 1.0104002738225872,
+    "r2": 0.6485175490379333
+  },
+  "val": {
+    "mae": 0.6044473052024841,
+    "rmse": 1.0487243487343545,
+    "r2": 0.6496500372886658
+  },
+  "test_log1p": {
+    "mae": 0.7521316409111023,
+    "rmse": 1.3161992665916988,
+    "r2": 0.4298999309539795,
+    "smape": 1.5910907983779907
+  },
+  "test_raw": {
+    "mae": 29.200531005859375,
+    "rmse": 256.51104081988365,
+    "r2": 0.007917165756225586,
+    "smape": 1.7150816917419434
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_14d_mean",
+      "humidity_14d_mean",
+      "rain_14d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 90,
+    "horizon": 14,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 39950,
+      "val_samples": 5780,
+      "test_samples": 5848
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w90_h14/context/sequences_window90_h14.npz",
+    "out_dir": "results/out_train_w90_h14_context/cnn_lstm_core",
+    "epochs": 150,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "conv_filters": 64,
+    "kernel_size": 5,
+    "lstm_units": 64,
+    "dropout": 0.25,
+    "patience": 25,
+    "seed": 42,
+    "plot_station": "",
+    "spike_only": false,
+    "spike_threshold": 100.0
+  }
+}

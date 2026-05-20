@@ -1,9 +1,10 @@
 #!/bin/bash
 
-set -e
+set -eo pipefail
 
 # ค้นหา directory ของ script นี้ (ใช้งานได้ไม่ว่าจะรันจาก directory ไหน)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PYTHON="/home/ai-station/my_project/.tf251p310/bin/python"
 
 # ==============================
 # รับค่าจากผู้ใช้ตอนรัน
@@ -45,7 +46,7 @@ echo "======================================"
 echo "1) Train LSTM"
 echo "======================================"
 
-python "$SCRIPT_DIR/train_lstm.py" \
+$PYTHON "$SCRIPT_DIR/train_lstm.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/lstm_core" \
   --epochs 120 --batch_size 128 --lr 0.0005 --patience 20 \
@@ -57,7 +58,7 @@ echo "======================================"
 echo "2) Train CNN-LSTM"
 echo "======================================"
 
-python "$SCRIPT_DIR/train_cnn_lstm.py" \
+$PYTHON "$SCRIPT_DIR/train_cnn_lstm.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/cnn_lstm_core" \
   --epochs 150 --batch_size 128 --lr 0.0005 --patience 25 \
@@ -70,7 +71,7 @@ echo "======================================"
 echo "3) Train Transformer"
 echo "======================================"
 
-python "$SCRIPT_DIR/train_transformer.py" \
+$PYTHON "$SCRIPT_DIR/train_transformer.py" \
   --npz "$NPZ" \
   --out_dir "$ROOT_OUT/transformer_core" \
   --epochs 200 --batch_size 128 --lr 0.0005 --patience 30 \
@@ -83,7 +84,7 @@ echo "======================================"
 echo "4) Summarize Runs"
 echo "======================================"
 
-python "$SCRIPT_DIR/summarize_runs.py" \
+$PYTHON "$SCRIPT_DIR/summarize_runs.py" \
   --root "$ROOT_OUT" \
   --out "$ROOT_OUT/summary" \
   2>&1 | tee "$ROOT_OUT/logs/04_summary.log"

@@ -1,0 +1,90 @@
+{
+  "model": "Transformer",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w90_h14/context/sequences_window90_h14.npz",
+  "window": 90,
+  "n_features": 18,
+  "train": {
+    "mae": 0.6270656585693359,
+    "rmse": 1.0941639253204782,
+    "r2": 0.5878251194953918
+  },
+  "val": {
+    "mae": 0.623556911945343,
+    "rmse": 1.0356291068806596,
+    "r2": 0.6583449244499207
+  },
+  "test_log1p": {
+    "mae": 0.9621163010597229,
+    "rmse": 1.6487458288734316,
+    "r2": 0.10542809963226318,
+    "smape": 1.6239242553710938
+  },
+  "test_raw": {
+    "mae": 47.65927505493164,
+    "rmse": 278.5709486603009,
+    "r2": -0.17005813121795654,
+    "smape": 1.756445050239563
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_14d_mean",
+      "humidity_14d_mean",
+      "rain_14d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 90,
+    "horizon": 14,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 39950,
+      "val_samples": 5780,
+      "test_samples": 5848
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w90_h14/context/sequences_window90_h14.npz",
+    "out_dir": "results/out_train_w90_h14_context/transformer_core",
+    "epochs": 200,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "d_model": 64,
+    "num_layers": 2,
+    "num_heads": 4,
+    "ff_dim": 128,
+    "dropout": 0.2,
+    "patience": 30,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

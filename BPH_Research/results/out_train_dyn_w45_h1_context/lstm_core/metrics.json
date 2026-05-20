@@ -1,0 +1,87 @@
+{
+  "model": "LSTM",
+  "npz": "/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_feature_sets_w45_h1/context/sequences_window45_h1.npz",
+  "window": 45,
+  "n_features": 18,
+  "train": {
+    "mae": 0.6721680760383606,
+    "rmse": 1.1842943390527758,
+    "r2": 0.513342022895813
+  },
+  "val": {
+    "mae": 0.7407522797584534,
+    "rmse": 1.2517506261587434,
+    "r2": 0.5123347640037537
+  },
+  "test_log1p": {
+    "mae": 0.7392263412475586,
+    "rmse": 1.333256043737144,
+    "r2": 0.36706817150115967,
+    "smape": 1.6450653076171875
+  },
+  "test_raw": {
+    "mae": 25.1893253326416,
+    "rmse": 223.02534539262572,
+    "r2": 0.009293973445892334,
+    "smape": 1.7646121978759766
+  },
+  "meta": {
+    "set_name": "context",
+    "date_col": "date",
+    "station_col": "station_id",
+    "target_used": "bph_log1p",
+    "feature_cols": [
+      "month_sin",
+      "month_cos",
+      "doy_sin",
+      "doy_cos",
+      "temp",
+      "humidity",
+      "rainfall",
+      "wind_u",
+      "wind_v",
+      "delta_temp",
+      "temp_7d_mean",
+      "humidity_7d_mean",
+      "rain_7d_sum",
+      "temp_range",
+      "area_rai_in_season",
+      "area_rai_off_season",
+      "latitude",
+      "longitude"
+    ],
+    "window": 45,
+    "horizon": 1,
+    "split": {
+      "n_dates": 1826,
+      "n_train_dates": 1278,
+      "n_val_dates": 273,
+      "n_test_dates": 275,
+      "train_start": "2015-01-01",
+      "train_end": "2018-07-01",
+      "val_start": "2018-07-02",
+      "val_end": "2019-03-31",
+      "test_start": "2019-04-01",
+      "test_end": "2019-12-31"
+    },
+    "require_consecutive": true,
+    "counts": {
+      "train_samples": 41922,
+      "val_samples": 7752,
+      "test_samples": 7820
+    }
+  },
+  "hyperparams": {
+    "npz": "results/out_feature_sets_w45_h1/context/sequences_window45_h1.npz",
+    "out_dir": "results/out_train_dyn_w45_h1_context/lstm_core",
+    "epochs": 120,
+    "batch_size": 128,
+    "lr": 0.0005,
+    "clipnorm": 1.0,
+    "lstm_units": 64,
+    "dropout": 0.2,
+    "patience": 20,
+    "seed": 42,
+    "plot_station": ""
+  }
+}

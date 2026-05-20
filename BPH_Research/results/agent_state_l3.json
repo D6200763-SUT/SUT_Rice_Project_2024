@@ -1,0 +1,164 @@
+{
+  "created": "2026-05-20T14:43:53.255859",
+  "goal": {
+    "metric": "r2_log1p",
+    "target": 0.55,
+    "min_acceptable": 0.4,
+    "peak_target": 300.0
+  },
+  "quality_gate_done": true,
+  "build_w30_h1": true,
+  "build_w30_h7": true,
+  "build_w60_h7": true,
+  "experiments": {
+    "w30_h1_context": {
+      "status": "done",
+      "best_score": 0.5,
+      "best_peak_rmse": 216.1,
+      "inspect_done": true,
+      "summarize_done": true
+    },
+    "w30_h7_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T15:02:11.040562",
+      "summarize_done": true,
+      "best_score": 0.4941256046295166,
+      "best_peak_rmse": null,
+      "best_model": "cnn_lstm_core"
+    },
+    "w60_h7_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T15:19:38.398555",
+      "summarize_done": true,
+      "best_score": 0.40702569484710693,
+      "best_peak_rmse": null,
+      "best_model": "cnn_lstm_core"
+    },
+    "w90_h14_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T15:34:09.376359",
+      "summarize_done": true,
+      "best_score": 0.4298999309539795,
+      "best_peak_rmse": null,
+      "best_model": "cnn_lstm_core"
+    },
+    "dyn_w15_h1_context": {
+      "inspect_done": true,
+      "status": "failed"
+    },
+    "dyn_w45_h1_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T16:08:11.166189",
+      "summarize_done": true,
+      "best_score": 0.47768038511276245,
+      "best_peak_rmse": null,
+      "best_model": "cnn_lstm_core"
+    },
+    "dyn_w60_h1_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T16:24:27.341583",
+      "summarize_done": true,
+      "best_score": 0.45378416776657104,
+      "best_peak_rmse": null,
+      "best_model": "cnn_lstm_core"
+    },
+    "two_stage_w30_h1_context_q75": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T18:46:10.961160",
+      "summarize_done": true,
+      "best_score": 0.14492225646972656,
+      "delta_r2": -0.355078,
+      "classifier_f1": 0.6468831653602091,
+      "classifier_auc": 0.8772776152165704
+    },
+    "two_stage_w30_h1_context_q80": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T18:51:38.747659",
+      "summarize_done": true
+    }
+  },
+  "current_best": "w30_h1_context",
+  "current_best_score": 0.5,
+  "current_best_peak": 216.1,
+  "dynamic_queue": [
+    {
+      "id": "dyn_w15_h1_context",
+      "window": 15,
+      "horizon": 1,
+      "feature_set": "context",
+      "roll_days": 7,
+      "preset": "balanced",
+      "source": "dynamic_window_search"
+    },
+    {
+      "id": "dyn_w45_h1_context",
+      "window": 45,
+      "horizon": 1,
+      "feature_set": "context",
+      "roll_days": 7,
+      "preset": "balanced",
+      "source": "dynamic_window_search"
+    },
+    {
+      "id": "dyn_w60_h1_context",
+      "window": 60,
+      "horizon": 1,
+      "feature_set": "context",
+      "roll_days": 7,
+      "preset": "balanced",
+      "source": "dynamic_window_search"
+    }
+  ],
+  "hp_history": [],
+  "phase": "explore",
+  "peak_mode": false,
+  "iteration": 11,
+  "status": "done",
+  "log": [
+    "[2026-05-20 14:44:29][GOOD] inspect[w30_h7_context] DONE",
+    "[2026-05-20 15:02:11][GOOD] train[w30_h7_context] DONE",
+    "[2026-05-20 15:02:12][GOOD] summarize[w30_h7_context] R²=None peak_rmse=None",
+    "[2026-05-20 15:02:12][ACT] DYNAMIC: เพิ่ม dyn_w15_h1_context (source=dynamic_window_search)",
+    "[2026-05-20 15:02:12][ACT] DYNAMIC: เพิ่ม dyn_w45_h1_context (source=dynamic_window_search)",
+    "[2026-05-20 15:02:12][ACT] DYNAMIC: เพิ่ม dyn_w60_h1_context (source=dynamic_window_search)",
+    "[2026-05-20 15:02:15][GOOD] inspect[w60_h7_context] DONE",
+    "[2026-05-20 15:19:38][GOOD] train[w60_h7_context] DONE",
+    "[2026-05-20 15:19:40][GOOD] summarize[w60_h7_context] R²=None peak_rmse=None",
+    "[2026-05-20 15:19:43][GOOD] inspect[w90_h14_context] DONE",
+    "[2026-05-20 15:34:09][GOOD] train[w90_h14_context] DONE",
+    "[2026-05-20 15:34:11][GOOD] summarize[w90_h14_context] R²=None peak_rmse=None",
+    "[2026-05-20 15:34:25][GOOD] build W=15,H=1 DONE",
+    "[2026-05-20 15:46:18][GOOD] summarize[w30_h7_context] R²=0.4941256046295166 peak_rmse=None",
+    "[2026-05-20 15:46:18][GOOD] summarize[w60_h7_context] R²=0.40702569484710693 peak_rmse=None",
+    "[2026-05-20 15:46:18][GOOD] summarize[w90_h14_context] R²=0.4298999309539795 peak_rmse=None",
+    "[2026-05-20 15:48:17][GOOD] inspect[dyn_w15_h1_context] DONE",
+    "[2026-05-20 15:50:12][GOOD] build W=45,H=1 DONE",
+    "[2026-05-20 15:50:14][GOOD] inspect[dyn_w45_h1_context] DONE",
+    "[2026-05-20 16:08:11][GOOD] train[dyn_w45_h1_context] DONE",
+    "[2026-05-20 16:08:12][GOOD] summarize[dyn_w45_h1_context] R²=0.47768038511276245 peak_rmse=None",
+    "[2026-05-20 16:08:32][GOOD] build W=60,H=1 DONE",
+    "[2026-05-20 16:08:35][GOOD] inspect[dyn_w60_h1_context] DONE",
+    "[2026-05-20 16:24:27][GOOD] train[dyn_w60_h1_context] DONE",
+    "[2026-05-20 16:24:28][GOOD] summarize[dyn_w60_h1_context] R²=0.45378416776657104 peak_rmse=None",
+    "[2026-05-20 18:41:45][GOOD] inspect[two_stage_w30_h1_context_q75] DONE",
+    "[2026-05-20 18:46:10][GOOD] train[two_stage_w30_h1_context_q75] DONE",
+    "[2026-05-20 18:46:12][WARN] summarize[two_stage_w30_h1_context_q75] done (metrics not found)",
+    "[2026-05-20 18:46:14][GOOD] inspect[two_stage_w30_h1_context_q80] DONE",
+    "[2026-05-20 18:51:38][GOOD] train[two_stage_w30_h1_context_q80] DONE",
+    "[2026-05-20 18:51:40][WARN] summarize[two_stage_w30_h1_context_q80] done (metrics not found)",
+    "[2026-05-20 19:14:46][INFO] inject two-stage [two_stage_w30_h1_context_q75]: r2=0.14492225646972656 delta=None",
+    "[2026-05-20 19:19:39][INFO] inject two-stage [two_stage_w30_h1_context_q75]: r2=0.1449  ss_r2=0.5  delta=-0.3551",
+    "[2026-05-20 19:19:39][INFO] ARCH confirmed: single_stage  (delta_r2=-0.3551 < -0.01)"
+  ],
+  "build_w15_h1": true,
+  "build_w45_h1": true,
+  "build_w60_h1": true,
+  "two_stage_tested": true
+}

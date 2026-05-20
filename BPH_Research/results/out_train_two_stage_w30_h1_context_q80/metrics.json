@@ -1,0 +1,50 @@
+{
+  "model": "two_stage_cnn_lstm",
+  "stage1_classifier": {
+    "accuracy": 0.7714285714285715,
+    "precision": 0.43862368257904527,
+    "recall": 0.9383289124668435,
+    "f1": 0.5978031263202366,
+    "auc_roc": 0.9129876658991392,
+    "tn": 5011,
+    "fp": 1811,
+    "fn": 93,
+    "tp": 1415,
+    "spike_threshold": 0.5
+  },
+  "log1p": {
+    "mae": 0.8982082009315491,
+    "rmse": 1.634928960627595,
+    "r2": 0.03432643413543701,
+    "smape": 0.5311132073402405
+  },
+  "raw": {
+    "mae": 29.86182975769043,
+    "rmse": 214.7315729870668,
+    "r2": 0.023904860019683838,
+    "smape": 0.653745174407959
+  },
+  "spike_only_log1p": {
+    "mae": 0.9856528639793396,
+    "rmse": 1.4083697131873567,
+    "r2": -0.20038259029388428
+  },
+  "spike_only_raw": {
+    "mae": 113.95854187011719,
+    "rmse": 499.9143832947798,
+    "r2": -0.0304720401763916
+  },
+  "config": {
+    "spike_quantile": 0.8,
+    "spike_cutoff": 1.945910096168518,
+    "spike_threshold": 0.5,
+    "spike_ratio_train": 0.20225301384925842,
+    "window": 30,
+    "n_features": 18
+  },
+  "improvement_vs_single_stage": {
+    "single_stage_r2_log1p": null,
+    "two_stage_r2_log1p": 0.03432643413543701,
+    "delta_r2": null
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "created": "2026-05-20T12:22:40.632590",
+  "goal": {
+    "metric": "r2_log1p",
+    "target": 0.5,
+    "min_acceptable": 0.4
+  },
+  "experiments": {
+    "w30_h1_context": {
+      "inspect_done": true,
+      "status": "done",
+      "train_finished_at": "2026-05-20T12:26:50.790304",
+      "summarize_done": true,
+      "best_score": null
+    }
+  },
+  "current_best": null,
+  "current_best_score": null,
+  "iteration": 1,
+  "status": "running",
+  "log": [
+    "[2026-05-20 12:22:40] quality_gate marked DONE",
+    "[2026-05-20 12:26:49] inspect[w30_h1_context] marked DONE",
+    "[2026-05-20 12:26:50] train[w30_h1_context] marked DONE",
+    "[2026-05-20 12:26:52] summarize[w30_h1_context] done (metrics not found in results/out_train_w30_h1_context)"
+  ],
+  "quality_gate_done": true
+}

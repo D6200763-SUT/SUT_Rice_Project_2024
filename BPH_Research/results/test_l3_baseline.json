@@ -1,0 +1,86 @@
+{
+  "created": "2026-05-20T14:35:12.173583",
+  "goal": {
+    "metric": "r2_log1p",
+    "target": 0.55,
+    "min_acceptable": 0.4,
+    "peak_target": 300.0
+  },
+  "quality_gate_done": true,
+  "build_w30_h1": true,
+  "experiments": {
+    "w30_h1_context": {
+      "status": "done",
+      "best_score": 0.5,
+      "best_peak_rmse": 216.1,
+      "best_model": "cnn_lstm_core",
+      "inspect_done": true,
+      "summarize_done": true
+    },
+    "w30_h7_context": {
+      "status": "done",
+      "best_score": 0.484,
+      "best_peak_rmse": 219.6,
+      "best_model": "cnn_lstm_context",
+      "inspect_done": true,
+      "summarize_done": true
+    },
+    "w60_h7_context": {
+      "status": "done",
+      "best_score": null,
+      "best_peak_rmse": null,
+      "inspect_done": true,
+      "summarize_done": true,
+      "best_model": null
+    },
+    "w30_h7_context_quality": {
+      "status": "done",
+      "best_score": 0.56,
+      "best_peak_rmse": 340.0,
+      "inspect_done": true,
+      "summarize_done": true
+    }
+  },
+  "current_best": "w30_h7_context_quality",
+  "current_best_score": 0.56,
+  "current_best_peak": 250.0,
+  "dynamic_queue": [
+    {
+      "id": "dyn_w30_h1_context_quality",
+      "window": 30,
+      "horizon": 1,
+      "feature_set": "context",
+      "roll_days": 7,
+      "preset": "quality",
+      "source": "exploit_quality"
+    },
+    {
+      "id": "dyn_hp_w30_h1_context_lr0001",
+      "window": 30,
+      "horizon": 1,
+      "feature_set": "context",
+      "roll_days": 7,
+      "preset": "custom",
+      "custom_hp": {
+        "lr": 0.001,
+        "dropout": 0.1,
+        "batch_size": 128
+      },
+      "source": "hyperopt"
+    }
+  ],
+  "hp_history": [],
+  "phase": "peak_focus",
+  "peak_mode": true,
+  "iteration": 5,
+  "status": "converged",
+  "log": [
+    "[2026-05-20] Injected from Layer 1-2 results",
+    "[2026-05-20 14:38:23][GOOD] summarize[w60_h7_context] R²=None peak_rmse=None",
+    "[2026-05-20 14:38:23][ACT] Phase: explore → exploit",
+    "[2026-05-20 14:38:23][ACT] DYNAMIC: เพิ่ม dyn_w30_h1_context_quality (source=exploit_quality)",
+    "[2026-05-20 14:38:23][ACT] DYNAMIC: เพิ่ม dyn_hp_w30_h1_context_lr0001 (source=hyperopt)",
+    "[2026-05-20 14:38:49][WARN] summarize[w30_h7_context_quality] done (metrics not found)",
+    "[2026-05-20 14:38:49][ACT] Phase: exploit → peak_focus"
+  ]
+}

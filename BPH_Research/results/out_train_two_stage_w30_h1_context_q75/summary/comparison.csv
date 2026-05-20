@@ -1,0 +1,2 @@
+﻿model,run_dir,npz,set,window,horizon,n_features,mae_log1p,rmse_log1p,r2_log1p,smape_log1p,mae_raw,rmse_raw,r2_raw,smape_raw
+two_stage_cnn_lstm,/home/ai-station/Projects_code/SUT_Rice_Project_2024/BPH_Research/results/out_train_two_stage_w30_h1_context_q75,,?,?,?,?,,,,,,,,

@@ -1,0 +1,42 @@
+{
+  "set_name": "core",
+  "date_col": "date",
+  "station_col": "station_id",
+  "target_used": "bph_log1p",
+  "feature_cols": [
+    "month_sin",
+    "month_cos",
+    "doy_sin",
+    "doy_cos",
+    "temp",
+    "humidity",
+    "rainfall",
+    "wind_u",
+    "wind_v",
+    "delta_temp",
+    "temp_7d_mean",
+    "humidity_7d_mean",
+    "rain_7d_sum",
+    "temp_range"
+  ],
+  "window": 45,
+  "horizon": 1,
+  "split": {
+    "n_dates": 1826,
+    "n_train_dates": 1278,
+    "n_val_dates": 273,
+    "n_test_dates": 275,
+    "train_start": "2015-01-01",
+    "train_end": "2018-07-01",
+    "val_start": "2018-07-02",
+    "val_end": "2019-03-31",
+    "test_start": "2019-04-01",
+    "test_end": "2019-12-31"
+  },
+  "require_consecutive": true,
+  "counts": {
+    "train_samples": 41922,
+    "val_samples": 7752,
+    "test_samples": 7820
+  }
+}
